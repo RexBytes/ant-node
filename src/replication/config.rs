@@ -47,6 +47,34 @@ pub const NEIGHBOR_SYNC_SCOPE: usize = 20;
 /// round.
 pub const NEIGHBOR_SYNC_PEER_COUNT: usize = 4;
 
+/// Best-effort delivery retries for a fresh-replication push, per peer.
+///
+/// ADR-0003: on a transport/send failure the offer is retried up to this many
+/// times so a transient hiccup does not silently drop it. This is delivery
+/// assurance only — possession is judged separately by the delayed possession
+/// check, which still penalises a close peer that lacks the chunk even if the
+/// push never reached it.
+pub const FRESH_REPLICATION_DELIVERY_MAX_RETRIES: u32 = 2;
+
+const POSSESSION_CHECK_DELAY_MIN_SECS: u64 = 5 * 60;
+const POSSESSION_CHECK_DELAY_MAX_SECS: u64 = 15 * 60;
+
+/// Lower bound of the delay before a fresh-replication possession check runs
+/// (ADR-0003).
+///
+/// The delay lets replication settle so an honest peer still mid-store is not
+/// judged prematurely, and makes the check unpredictable to the peer.
+pub const POSSESSION_CHECK_DELAY_MIN: Duration =
+    Duration::from_secs(POSSESSION_CHECK_DELAY_MIN_SECS);
+
+/// Upper bound of the possession-check delay (ADR-0003).
+pub const POSSESSION_CHECK_DELAY_MAX: Duration =
+    Duration::from_secs(POSSESSION_CHECK_DELAY_MAX_SECS);
+
+// The possession probe reuses the `AuditChallenge` wire and the bandwidth-
+// calibrated `audit_response_timeout(1)` deadline, so it needs no bespoke
+// per-probe timeout or retry constants.
+
 /// Width used when deciding whether this node may locally store or retain a
 /// chunk.
 #[must_use]
@@ -103,25 +131,28 @@ pub const MAX_CONCURRENT_REPLICATION_SENDS: usize = 3;
 
 /// Maximum number of concurrent in-flight audit-responder tasks.
 ///
-/// Subtree (round 1) and byte (round 2) challenge handlers are spawned off the
-/// serial replication message loop so their disk reads don't stall replication.
-/// This caps how many run at once across the engine, restoring backpressure: a
-/// peer flooding audit challenges cannot fan out unbounded `get_raw` reads or
-/// multi-MiB byte serves. When the cap is hit, the challenge is dropped — the
-/// auditor graces a non-response as a timeout, so honest auditors are
-/// unaffected and only a flooder is throttled. Sized to cover a handful of
-/// concurrent honest auditors (the per-peer gossip-audit cooldown is 30 min, so
-/// genuine concurrent audits are few) while bounding the byte round's worst-case
-/// resident bytes (`N × MAX_BYTE_CHALLENGE_KEYS × MAX_CHUNK_SIZE`).
-pub const MAX_CONCURRENT_AUDIT_RESPONSES: usize = 8;
+/// The responsible-chunk (audit #2), subtree (round 1), and byte (round 2)
+/// challenge handlers are all spawned off the serial replication message loop so
+/// their disk reads don't stall replication. This caps how many run at once
+/// across the engine, restoring backpressure: a peer flooding audit challenges
+/// cannot fan out unbounded `get_raw` reads or multi-MiB byte serves. When the
+/// cap is hit, the challenge is dropped and the caller's audit-specific timeout
+/// policy applies. The cap must therefore stay high enough for honest audit
+/// traffic while still throttling flooders.
+/// Sized to cover a handful of concurrent honest auditors (the per-peer
+/// gossip-audit cooldown is 30 min, so genuine concurrent audits are few) while
+/// bounding the byte round's worst-case resident bytes
+/// (`N × MAX_BYTE_CHALLENGE_KEYS × MAX_CHUNK_SIZE`).
+pub const MAX_CONCURRENT_AUDIT_RESPONSES: usize = 16;
 
 /// Maximum concurrent in-flight audit-responder tasks from any SINGLE peer.
 ///
 /// The global [`MAX_CONCURRENT_AUDIT_RESPONSES`] ceiling alone is not
 /// flood-fair: one peer spamming challenges could occupy every slot and starve
-/// honest auditors (whose dropped challenges convert to timeouts → strikes on
-/// the honest peers). This per-peer cap guarantees no source holds more than
-/// its share, so a flood self-throttles. Audits are cooldown-gated (one
+/// honest auditors (whose dropped challenges convert to audit failures or
+/// timeout verdicts on the challenged peers). This per-peer cap guarantees no
+/// source holds more than its share, so a flood self-throttles. Audits are
+/// cooldown-gated (one
 /// gossip-triggered audit per peer per 30 min), so 2 in-flight per peer
 /// comfortably covers the legitimate round-1 + round-2 overlap.
 pub const MAX_AUDIT_RESPONSES_PER_PEER: u32 = 2;
@@ -156,9 +187,9 @@ pub const AUDIT_TICK_INTERVAL_MAX: Duration = Duration::from_secs(AUDIT_TICK_INT
 /// Sized to absorb worst-case global RTT for the audit envelope
 /// (the request + response messages are KB-scale, not chunk-scale)
 /// plus scheduling jitter. Tokyo↔NY round-trip is ~150ms each way,
-/// so 2 seconds comfortably covers cross-continent communication
+/// so 4 seconds comfortably covers cross-continent communication
 /// for the round-1 proof, whose payload is hashes (KB-scale).
-const AUDIT_RESPONSE_FLOOR_SECS: u64 = 2;
+const AUDIT_RESPONSE_FLOOR_SECS: u64 = 4;
 
 /// Floor on the round-2 BYTE-challenge deadline.
 ///
@@ -166,11 +197,12 @@ const AUDIT_RESPONSE_FLOOR_SECS: u64 = 2;
 /// `MAX_BYTE_CHALLENGE_KEYS` full chunks (2 × 4 MiB = 8 MiB) back over the
 /// wire, so the envelope must also cover a cold QUIC handshake, the
 /// multi-MiB upload back to the auditor, and a busy honest peer's disk read.
-/// The round-1 2 s floor (sized for a hashes-only reply) is too tight here —
-/// the §4 finding. 5 s matches the cross-continent-RTT + handshake + 8 MiB
-/// transfer budget while keeping a relay that must fetch the bytes over a
-/// residential link outside it (the scaled term adds the per-byte estimate on
-/// top). Mirrors main's more generous byte-round base.
+/// The round-1 4 s floor is still sized for a hashes-only reply; round 2 needs
+/// a larger base for the §4 byte-serving envelope. 5 s matches the
+/// cross-continent-RTT + handshake + 8 MiB transfer budget while keeping a relay
+/// that must fetch the bytes over a residential link outside it (the scaled
+/// term adds the per-byte estimate on top). Mirrors main's more generous
+/// byte-round base.
 const BYTE_AUDIT_RESPONSE_FLOOR_SECS: u64 = 5;
 
 /// Conservative honest-responder read throughput, in bytes per second.
@@ -201,20 +233,6 @@ const AUDIT_HONEST_READ_BPS: u64 = 50 * 1024 * 1024;
 /// datacenter cross-connect could still fetch fast enough to answer in
 /// time (see the §7 note on `audit_response_timeout`).
 const AUDIT_RESPONSE_HONEST_MULTIPLIER: u64 = 5;
-
-/// Single-key prune audit response deadline.
-///
-/// Prune audits ask a peer whether they still hold one specific key
-/// they previously claimed. The relay-defence rationale that motivates
-/// the tight commitment-bound timeout does NOT apply here: the
-/// auditor's own out-of-range hysteresis (`PRUNE_HYSTERESIS_DURATION`,
-/// 3 days) already makes "fetch on demand" infeasible as a sustained
-/// strategy.
-///
-/// Sized to comfortably accommodate cold cross-continent QUIC
-/// handshake plus scheduling jitter on a busy honest peer answering
-/// a single-key challenge: 10 s.
-const PRUNE_AUDIT_RESPONSE_SECS: u64 = 10;
 
 /// Maximum duration a peer may claim bootstrap status before penalties apply.
 const BOOTSTRAP_CLAIM_GRACE_PERIOD_SECS: u64 = 24 * 60 * 60; // 24 h
@@ -276,23 +294,6 @@ const _: () = assert!(
     "wire cap must fit at least one max-size chunk per byte-challenge response"
 );
 
-/// Rollout gate for timeout-driven eviction.
-///
-/// When `false`, a peer that crosses the consecutive-timeout strike threshold
-/// is logged but NOT reported to the trust engine (no eviction). This PR is a
-/// breaking wire change (old nodes cannot decode the new `StorageCommitment`
-/// gossip), so a not-yet-upgraded peer times out on every new audit and looks
-/// exactly like a non-storing peer; penalising timeouts during the mixed-version
-/// window would make upgraded nodes evict every old node — a death spiral.
-///
-/// Confirmed storage-integrity failures (`DigestMismatch`/`KeyAbsent`/
-/// `Rejected`/`MalformedResponse`) are NEVER gated by this — those only come
-/// from a peer that actually answered with bad data, never an old node. Flip to
-/// `true` in a small follow-up release once the fleet has upgraded. This is a
-/// real `const` (not commented-out code) so both gate sites compile and stay in
-/// sync, and the flip is one line.
-pub const TIMEOUT_EVICTION_ENABLED: bool = false;
-
 /// Verification request timeout (per-batch).
 const VERIFICATION_REQUEST_TIMEOUT_SECS: u64 = 15;
 /// Verification request timeout (per-batch).
@@ -311,28 +312,6 @@ pub const PENDING_VERIFY_MAX_AGE: Duration = Duration::from_secs(PENDING_VERIFY_
 
 /// Trust event weight for confirmed audit failures.
 pub const AUDIT_FAILURE_TRUST_WEIGHT: f64 = 5.0;
-
-/// Consecutive audit *timeouts* a peer may accumulate before a timeout is
-/// reported as an `ApplicationFailure` trust event.
-///
-/// The audit response timeout is an economic deterrent calibrated for
-/// residential bandwidth, not a hard cryptographic bound: a single slow
-/// response is routine for an honest node under transient load (GC pause,
-/// disk flush, a burst of concurrent requests). Penalizing on the first
-/// timeout false-positives those nodes.
-///
-/// Requiring `N` *consecutive* timeouts before penalizing removes that
-/// false-positive while preserving the deterrent against a peer that does not
-/// actually store the data and must fetch it at audit time: such a peer is
-/// slow on *every* audit and accumulates a fresh strike each tick until it
-/// crosses the threshold, whereas an honest node answers normally between rare
-/// slow ticks and any success resets its strike counter to zero (see
-/// `handle_audit_result`). The discriminator is *persistence* of slowness
-/// versus *transience*. This deliberately does not widen the per-challenge
-/// window. Applies ONLY to `AuditFailureReason::Timeout`; confirmed
-/// storage-integrity failures (`DigestMismatch` / `KeyAbsent` / `Rejected` /
-/// `MalformedResponse`) remain instantly punishable.
-pub const AUDIT_TIMEOUT_STRIKE_THRESHOLD: u32 = 3;
 
 /// Probability of launching a subtree audit when a peer's *changed* commitment
 /// is ingested via gossip (ADR-0002). Keeps audits occasional surprise exams.
@@ -411,11 +390,6 @@ pub struct ReplicationConfig {
     /// Slack multiplier on the honest-read estimate before
     /// declaring an audit timed out.
     pub audit_response_honest_multiplier: u64,
-    /// Single-key prune-audit response deadline. Has its own constant
-    /// because the relay-defence rationale that motivates the tight
-    /// commitment-bound budget does not apply to a single-key prune
-    /// challenge.
-    pub prune_audit_response_timeout: Duration,
     /// Maximum duration a peer may claim bootstrap status.
     pub bootstrap_claim_grace_period: Duration,
     /// Minimum continuous out-of-range duration before pruning a key.
@@ -427,6 +401,13 @@ pub struct ReplicationConfig {
     /// Seconds to wait for `DhtNetworkEvent::BootstrapComplete` before
     /// proceeding with bootstrap sync (covers bootstrap nodes with no peers).
     pub bootstrap_complete_timeout_secs: u64,
+    /// Lower bound of the delay before a fresh-replication possession check
+    /// runs (ADR-0003). Defaults to [`POSSESSION_CHECK_DELAY_MIN`]; tests
+    /// shorten it so the scheduled check fires quickly.
+    pub possession_check_delay_min: Duration,
+    /// Upper bound of the possession-check delay window (ADR-0003). Defaults
+    /// to [`POSSESSION_CHECK_DELAY_MAX`].
+    pub possession_check_delay_max: Duration,
 }
 
 impl Default for ReplicationConfig {
@@ -447,12 +428,13 @@ impl Default for ReplicationConfig {
             audit_response_floor: Duration::from_secs(AUDIT_RESPONSE_FLOOR_SECS),
             audit_honest_read_bps: AUDIT_HONEST_READ_BPS,
             audit_response_honest_multiplier: AUDIT_RESPONSE_HONEST_MULTIPLIER,
-            prune_audit_response_timeout: Duration::from_secs(PRUNE_AUDIT_RESPONSE_SECS),
             bootstrap_claim_grace_period: BOOTSTRAP_CLAIM_GRACE_PERIOD,
             prune_hysteresis_duration: PRUNE_HYSTERESIS_DURATION,
             verification_request_timeout: VERIFICATION_REQUEST_TIMEOUT,
             fetch_request_timeout: FETCH_REQUEST_TIMEOUT,
             bootstrap_complete_timeout_secs: BOOTSTRAP_COMPLETE_TIMEOUT_SECS,
+            possession_check_delay_min: POSSESSION_CHECK_DELAY_MIN,
+            possession_check_delay_max: POSSESSION_CHECK_DELAY_MAX,
         }
     }
 }
@@ -591,12 +573,10 @@ impl ReplicationConfig {
     /// A relay attacker on a residential link (~5-12 MB/s) who must
     /// fetch the same `k × 4 MiB` over the network sees ~10-100× higher
     /// latency than disk for the data alone, plus per-chunk round-trips,
-    /// and misses the budget — recording a timeout strike (per
-    /// `handle_audit_timeout` → `handle_audit_failure`). After
-    /// [`AUDIT_TIMEOUT_STRIKE_THRESHOLD`] consecutive timeouts this would
-    /// fire an `application_failure` trust event — but note that report is
-    /// currently suppressed for the breaking rollout (grep
-    /// TIMEOUT-EVICTION-DISABLED); the strike accounting still runs.
+    /// and misses the budget. In the periodic responsible-chunk
+    /// `AuditChallenge`, prune-confirmation, and ADR-0003 possession-check paths
+    /// that timeout is an immediate audit failure. The heavier subtree audit
+    /// still graces timeouts separately.
     ///
     /// This is an economic deterrent for the §7 relay limit calibrated
     /// for residential bandwidth, NOT a hard bound: a relay on a
@@ -622,9 +602,9 @@ impl ReplicationConfig {
         // Resolve the scaled term in MILLISECONDS, not seconds: at the
         // byte-round sizes (MAX_BYTE_CHALLENGE_KEYS = 2 → 8 MiB) the per-second
         // quotient `multiplied / bps` integer-truncates to 0, leaving only the
-        // floor (the §4 finding: a 2×4 MiB honest serve under load could blow a
-        // 2 s budget). Computing in ms keeps the sub-second honest-read estimate
-        // (e.g. 8 MiB × 5 / 50 MB/s ≈ 840 ms) instead of dropping it.
+        // floor. The §4 finding was that byte-serving challenges need the
+        // sub-second honest-read estimate (e.g. 8 MiB × 5 / 50 MB/s ≈ 840 ms)
+        // instead of dropping it.
         let scaled_ms = multiplied.saturating_mul(1000) / bps;
         // saturating_add avoids a panic if the floor plus the scaled term would
         // overflow `Duration::MAX`.
@@ -739,14 +719,6 @@ mod tests {
     }
 
     #[test]
-    fn audit_timeout_strike_threshold_is_three() {
-        // Smallest threshold that tolerates back-to-back transient slowness
-        // while still penalizing a persistently-slow non-storing peer within a
-        // few audit ticks.
-        assert_eq!(AUDIT_TIMEOUT_STRIKE_THRESHOLD, 3);
-    }
-
-    #[test]
     fn replication_protocol_id_is_v2() {
         // The v12 storage-bound audit changes replication SEMANTICS. The
         // protocol id MUST advance past v1 so v1 and v2 nodes never exchange
@@ -776,19 +748,19 @@ mod tests {
 
         // Scaling now resolves in MILLISECONDS so a sub-second honest read no
         // longer truncates to zero (§4). For k=1:
-        // (4_194_304 × 5 × 1000) / 52_428_800 = 400 ms, + 2 s round-1 floor =
-        // 2.4 s (previously collapsed to the bare 2 s floor).
-        assert_eq!(t1, Duration::from_millis(2400));
+        // (4_194_304 × 5 × 1000) / 52_428_800 = 400 ms, + 4 s round-1 floor =
+        // 4.4 s.
+        assert_eq!(t1, Duration::from_millis(4400));
 
         // For k=10: (10 × 4_194_304 × 5 × 1000) / 52_428_800 = 4000 ms scaled,
-        // + 2 s floor = 6 s. An HDD-backed honest peer at 20 MB/s reads 40 MiB
+        // + 4 s floor = 8 s. An HDD-backed honest peer at 20 MB/s reads 40 MiB
         // in ~2 s, comfortably inside; a relay fetching 40 MiB at 5 MB/s
         // residential bandwidth needs ~8 s for the data alone, outside.
-        assert_eq!(t10, Duration::from_secs(6));
+        assert_eq!(t10, Duration::from_secs(8));
 
         // For k=100: (100 × 4_194_304 × 5 × 1000) / 52_428_800 = 40_000 ms
-        // scaled, + 2 s floor = 42 s.
-        assert_eq!(t100, Duration::from_secs(42));
+        // scaled, + 4 s floor = 44 s.
+        assert_eq!(t100, Duration::from_secs(44));
     }
 
     #[test]
@@ -799,7 +771,7 @@ mod tests {
         // well below modern HDDs which sustain 80-150 MB/s sequential)
         // reads 10 × 4 MiB = 40 MiB in ~2 s. Add 300 ms cross-continent
         // RTT, ~10 ms scheduling, ~3 ms ML-DSA sign, and the honest
-        // envelope is ~2.3 s. The 6 s budget at k=10 leaves >3 s of
+        // envelope is ~2.3 s. The 8 s budget at k=10 leaves >5 s of
         // slack.
         let config = ReplicationConfig::default();
         let budget = config.audit_response_timeout(10);
@@ -819,7 +791,7 @@ mod tests {
         // read budget fits inside `audit_response_timeout(k)`, while a
         // relay attacker fetching k*4MiB over residential bandwidth
         // (≈ 5 MB/s realistic for sustained download) does NOT. Spot-
-        // check this at k=100: honest budget is 42s, relay needs at
+        // check this at k=100: honest budget is 44s, relay needs at
         // least 100 * 4 MiB / 5 MB/s = 80s for the data alone, which
         // exceeds the budget.
         let config = ReplicationConfig::default();

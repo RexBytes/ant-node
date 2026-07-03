@@ -1151,26 +1151,14 @@ async fn peer_proves_record(
         let mut rng = rand::thread_rng();
         (rng.gen::<u64>(), rng.gen::<[u8; 32]>())
     };
-    let encoded = encode_prune_audit_challenge(&peer, key, challenge_id, nonce)?;
-    let Some(decoded) = send_prune_audit_challenge(&peer, &key, encoded, p2p_node, config).await
+    let (encoded, key_count) = encode_prune_audit_challenge(&peer, key, challenge_id, nonce)?;
+    let Some(decoded) =
+        send_prune_audit_challenge(&peer, &key, encoded, key_count, p2p_node, config).await
     else {
-        // No decoded response means a timeout or an undecodable reply — the
-        // same "no response" case the main audit path treats as a timeout. The
-        // penalty is gated behind `TIMEOUT_EVICTION_ENABLED` (off this
-        // release — a not-yet-upgraded or briefly-slow peer must not be evicted
-        // by a no-response during the breaking rollout). Mirrors the suppressed
-        // timeout penalty in handle_failed_audit; only a DECODED
-        // PruneAuditStatus::Failed below (a peer that answered with bad/absent
-        // bytes) is penalised regardless of the gate.
-        if crate::replication::config::TIMEOUT_EVICTION_ENABLED {
-            report_prune_audit_failure_once(&peer, &key, p2p_node, config, report_state).await;
-        } else {
-            debug!(
-                "Prune audit for {peer} key {} got no decodable response \
-                 (eviction disabled this release — not penalising)",
-                hex::encode(key)
-            );
-        }
+        // No decoded response means a timeout or malformed reply. Prune
+        // confirmation reuses `AuditChallenge` semantics, so this is an immediate
+        // audit failure just like a decoded bad proof below.
+        report_prune_audit_failure_once(&peer, &key, p2p_node, config, report_state).await;
         return None;
     };
 
@@ -1208,13 +1196,14 @@ fn encode_prune_audit_challenge(
     key: XorName,
     challenge_id: u64,
     nonce: [u8; 32],
-) -> Option<Vec<u8>> {
+) -> Option<(Vec<u8>, usize)> {
     let challenge = AuditChallenge {
         challenge_id,
         nonce,
         challenged_peer_id: *peer.as_bytes(),
         keys: vec![key],
     };
+    let key_count = challenge.keys.len();
     let msg = ReplicationMessage {
         request_id: challenge_id,
         body: ReplicationMessageBody::AuditChallenge(challenge),
@@ -1229,23 +1218,20 @@ fn encode_prune_audit_challenge(
             return None;
         }
     };
-    Some(encoded)
+    Some((encoded, key_count))
 }
 
 async fn send_prune_audit_challenge(
     peer: &PeerId,
     key: &XorName,
     encoded: Vec<u8>,
+    key_count: usize,
     p2p_node: &Arc<P2PNode>,
     config: &ReplicationConfig,
 ) -> Option<ReplicationMessage> {
+    let timeout = config.audit_response_timeout(key_count);
     let response = match p2p_node
-        .send_request(
-            peer,
-            REPLICATION_PROTOCOL_ID,
-            encoded,
-            config.prune_audit_response_timeout,
-        )
+        .send_request(peer, REPLICATION_PROTOCOL_ID, encoded, timeout)
         .await
     {
         Ok(response) => response,
