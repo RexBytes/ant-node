@@ -227,3 +227,10 @@ proptest-regressions/
 .claude/
 .cache/
 /devnet-manifest.json
+
+# LLVM coverage artifacts (stitchgraph-coverage kit / cargo-llvm-cov)
+*.profraw
+*.profdata
+stitchgraph-coverage/rust/out/
+stitchgraph-coverage/python/out/
+stitchgraph*.db
