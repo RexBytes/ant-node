@@ -1,0 +1,16 @@
+# `docker compose run --rm coverage` — isolated: no network, read-only rootfs, tmpfs work area,
+# dropped caps, memory/pid limits. Emits ./out/coverage_modes.json.
+services:
+  coverage:
+    build: .
+    network_mode: "none"          # no outbound network while running untrusted tests
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 512
+    mem_limit: 2g
+    volumes:
+      - ./out:/work/out           # the ONLY thing that comes back out
+    command: bash -lc "bash run_coverage.sh && cp coverage_modes.json out/"
