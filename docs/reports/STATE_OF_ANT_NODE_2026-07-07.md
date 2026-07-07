@@ -165,7 +165,70 @@ that wiring was completed for this report: each test runs in its own process und
 `cargo-llvm-cov` instrumentation, per-test LCOV is mapped back to graph node IDs by
 line ranges, producing a `stitchgraph-coverage-v1` artifact.
 
-<!-- BEHAVIOURAL_RESULTS -->
+**Artifact**: 792 tests captured (per-test function-level coverage), 790 mapped to
+graph node IDs. 14 tests failed in this environment — all Anvil/EVM-dependent e2e
+tests (the Anvil binary can't be fetched here); their partial coverage is included,
+so payment-verifier gap numbers below are slightly overstated.
+
+### `find-modes` — the POD (behavioural modes)
+
+- The suite exercises **16 dominant behavioural modes** (intrinsic dimensionality
+  42 at the energy threshold). The top mode (44.6% of coverage energy) is the
+  test-harness storage/quote/verifier attach path — i.e. most tests share the same
+  setup spine. The next modes are cleanly interpretable: Merkle tree build/hash
+  (9.9%), payment verify + cache (5.6%), LMDB space accounting (3.7%), commitment
+  state (2.2%), audit protocol (1.9%), quorum/config decoding (1.6%).
+- **A minimal covering set of 124 tests (16% of the suite) reaches every function
+  any test reaches.** `test-order` puts `test_prune_veto_for_committed_out_of_range_key`
+  first (205 new functions), then `test_late_joiner_replicates_responsible_chunks`
+  (+58) — a fast smoke prefix for CI.
+- **992 coverage-identical test pairs / 130 groups (311 tests)** — mostly
+  legitimately parametrized variants (e.g. the `quorum.rs` family); a consolidation
+  review aid, not a delete list.
+
+### `find-gaps` — live code no test executes
+
+Of 1,670 functions, **695 are executed by tests, 974 are live-but-untested** (776 of
+those in `src/`, the rest scripts/bins). Heaviest untested files:
+`payment/verifier.rs` (78 — partly the failed EVM tests), `replication/audit.rs`
+(37), `replication/types.rs` (35), `replication/protocol.rs` (32). Note the overlap
+with the churn hotspots in §4: **the two files most likely to change are also among
+the least executed by tests.** Exactly **1 untested-dead** function is reported —
+the same `churn-test.sh::get_worker_nodes` that `find-stale` flagged statically
+(the two independent analyses agree).
+
+### `audit-graph` — the static graph vs runtime ground truth
+
+Static reachability achieved **0.999 recall** against actually-executed functions
+(757 tests audited), with 19.6× overapproximation (expected: static reach is a
+superset). The only systematically missed functions are trait-dispatch impls —
+`FetchCandidate.partial_cmp/eq/cmp`, `ReplicationProtocolError.fmt` — the classic
+dynamic-dispatch blind spot. The static findings in this report can be trusted.
+
+### `find-core` / `find-coupling` / `runtime-risk`
+
+- **Always-on core**: `VerifiedCache.with_capacity` (131 tests), `PaymentVerifier.new`
+  (122), `LmdbStorage.new` + `compute_map_size` (98 each) — regressions here fail
+  a sixth of the suite at once.
+- **Hidden coupling (runtime)**: 35 cross-file pairs co-run with no static edge and
+  no common caller. Nearly all involve `PaymentVerifier.attach_p2p_node` ↔ the
+  `ReplicationEngine.start_*` loops: node startup wires these via spawned async
+  tasks, which severs static call edges. Anyone reordering startup in
+  `RunningNode.run` should know the payment attach and replication loops are
+  sequenced by convention only.
+- **`runtime-risk`** (churn × behavioural centrality) promotes
+  `src/replication/mod.rs` to 🟠 alongside `payment/verifier.rs` — the engine file
+  is executed by more behaviours than its static centrality suggests.
+
+### `select-tests` — demo on the actual release-to-HEAD changeset
+
+For the two functions that changed since 0.14.2
+(`encode_prune_audit_challenge`, `send_prune_audit_challenge`): runtime evidence
+says **3 e2e prune tests actually executed them**
+(`prune_deletes_at_proof_threshold_and_retains_below_it`,
+`test_prune_pass_requires_remote_confirmation_before_delete`,
+`test_prune_veto_for_committed_out_of_range_key`); the static blast radius adds 137
+more candidates. Running those 3 first is the fast regression check for that change.
 
 ## 8. Project pulse
 
