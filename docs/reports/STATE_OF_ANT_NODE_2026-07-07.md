@@ -12,8 +12,10 @@ being reported here, and resolution artifacts are called out as such.
 
 ## TL;DR for devs
 
-1. **The suite is green.** All 670 lib tests pass (2.7 s in release), plus the PoC
-   suites and doc-tests. `cargo fmt --check` is clean.
+1. **The suite is green.** All 670 lib tests pass (2.7 s in release), all 35 PoC
+   tests, and 70/70 runnable e2e tests (the 14 "failures" here are all the missing
+   `anvil` binary in this sandbox — they run in CI, which installs Foundry).
+   `cargo fmt --check` and clippy (`-D warnings`, all targets/features) are clean.
 2. **One known, documented, unfixed DoS**: the bootstrap-stall attack
    (`tests/poc_bootstrap_stall.rs`) — a single Byzantine peer can permanently prevent
    bootstrap from draining, which silently disables audits and the reputation system
@@ -49,7 +51,24 @@ being reported here, and resolution artifacts are called out as such.
 
 ### `cargo test --release --features test-utils` (e2e + PoC suites, mirrors CI)
 
-<!-- FEATURE_TEST_RESULTS -->
+| Target | Result |
+|---|---|
+| e2e suite (`tests/e2e/`, 25-node in-process testnets) | **70 passed, 14 failed***, 3 ignored (35.8 min) |
+| `poc_commitment_audit_attacks` | 19 passed |
+| `poc_audit_handler_live` | 8 passed |
+| `poc_bootstrap_stall` | 2 passed (by *asserting the unfixed attack* — see §6) |
+| `poc_d1_bounded_queues` | 6 passed |
+| lib unit tests (also run per-test under coverage) | 670 passed |
+
+\* **All 14 failures are environmental, not code failures**: each dies in
+`evmlib::testnet::Testnet::new()` with
+`SpawnFailed("could not spawn node: No such file or directory")` — the `anvil`
+binary (Foundry) is not installable in this sandbox (GitHub binary downloads are
+blocked). The failing set is exactly the EVM-payment e2e tests
+(`anvil`, `chunk-rejected-without-payment`, `network_with_evm`, 5×
+`merkle_payment` attacks, `payment_flow` helper, 5× `security_attacks`). The same
+14 tests run in CI, which installs Foundry v1.7.1 before the e2e step. The 3 ignored are the
+live-testnet tests awaiting the saorsa-core 0.16 rewrite (TL;DR #6).
 
 ### Lints
 
@@ -247,15 +266,19 @@ more candidates. Running those 3 first is the fast regression check for that cha
 
 ## 9. Recommended actions, ranked
 
-1. **Fix the bootstrap-stall DoS** (§6) — an in-repo PoC, a sketched fix space, and a
+1. **`cargo update -p crossbeam-epoch`** — one line, unblocks the CI audit job
+   before RUSTSEC-2026-0204 turns it red.
+2. **Fix the bootstrap-stall DoS** (§6) — an in-repo PoC, a sketched fix space, and a
    required follow-up test already exist; this is shovel-ready.
-2. **Implement issue #1's options A + C** (shared `close_group_for()` + a
+3. **Implement issue #1's options A + C** (shared `close_group_for()` + a
    producer→consumer round-trip contract test) — today's risk run shows the
    `audit ↔ neighbor_sync` co-change signal is still live.
-3. **Rewrite the three `#[ignore]`d live-testnet tests** for saorsa-core 0.16 so
+4. **Rewrite the three `#[ignore]`d live-testnet tests** for saorsa-core 0.16 so
    live-network coverage returns.
-4. **Delete `get_worker_nodes`** from `scripts/testnet/churn-test.sh` (verified dead).
-5. When editing `payment/verifier.rs` or `replication/types.rs`, run
+5. **Delete `get_worker_nodes`** from `scripts/testnet/churn-test.sh` (verified dead).
+6. **Backfill tests where churn meets zero coverage** (§7 find-gaps): start with the
+   untested-live functions in `replication/audit.rs` and `replication/types.rs`.
+7. When editing `payment/verifier.rs` or `replication/types.rs`, run
    `stitchgraph impact-of <symbol>` first — these are the two files where churn and
    blast radius multiply.
 
@@ -271,7 +294,8 @@ stitchgraph impact-of PaymentVerifier / LmdbStorage
 stitchgraph trace-path "src/bin/ant-node/main.rs::main" "src/storage/lmdb.rs::LmdbStorage.put"
 stitchgraph summarize-subsystem src/{replication,payment,storage}
 stitchgraph graph-diff <db@3df630c>        # release-to-HEAD structural diff
-stitchgraph scaffold-coverage              # + completed the Rust per-test wiring
+stitchgraph scaffold-coverage              # Rust per-test wiring completed and
+                                           # committed at stitchgraph-coverage/rust/
 stitchgraph find-modes / find-gaps / find-core / redundant-tests / test-order / ...
 
 cargo test --release                        # and --features test-utils
