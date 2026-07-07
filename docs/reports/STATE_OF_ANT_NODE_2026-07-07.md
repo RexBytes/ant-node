@@ -284,6 +284,55 @@ more candidates. Running those 3 first is the fast regression check for that cha
 
 ---
 
+## 10. Addendum: full re-run with `--lsp` (rust-analyzer)
+
+The entire battery above was re-run against an index built with
+`stitchgraph reindex . --lsp` (rust-analyzer 1.94.1 as the type oracle;
+3m15s; **5,526 call sites queried, 3,462 resolved to confident type-grade
+edges**). Net effect at the graph level: +919 `extracted` edges and 862
+name-ambiguous widened groups collapsed. What that changed — and didn't:
+
+**Conclusions that held identically** (name-based ≙ LSP): every headline finding.
+Same single dead function in ant-node code, zero holes, same risk hotspots, same
+hidden-coupling pairs, same release-to-HEAD graph-diff delta, identical behavioural
+results (16 modes, dimensionality 42, 124-test minimal cover, audit-graph recall
+0.999 with the same trait-dispatch misses). The report's substance is
+resolution-strategy-independent, which is itself a useful robustness check.
+
+**What LSP genuinely improved:**
+- 862 previously widened (multi-candidate) call sites now have a single confident
+  target — drill-down ops (`get-callees`, `get-matrix`) return sharper edges.
+- With the whole-suite trace also fused via `ingest-trace`, `find-stale`
+  confidence rose from 0.60 to **0.78** ("not reached statically AND not executed
+  in the trace").
+
+**What LSP did not fix** (useful to know before reaching for it):
+- The 🟢 scan artifacts (the `put ↔ try_put` "cycle", the `*.new` "god objects")
+  persist unchanged, still resting on 0-confident name edges. The heuristic
+  fallback edges for *external* targets (e.g. heed's `Database::put`) remain in
+  the graph alongside the LSP resolutions.
+- `impact_of PaymentVerifier` stays ambiguous (0.47, blast radius 1,412) — the
+  radius is dominated by bare-name REFERENCES edges, not call sites.
+
+**Two sharp edges found while validating** (relevant to anyone scripting stitchgraph):
+- `get-callers` on `verify_path` returns a *confident empty* on both indexes,
+  although nine tests call it — every call site is wrapped in `assert!(...)`,
+  and macro-wrapped calls are extracted as REFERENCES, not CALLS. In macro-heavy
+  Rust, "no callers" needs a REFERENCES cross-check before you believe it.
+- New this run: `find-stale` flags `func_ranges` in the committed coverage kit's
+  `to_canonical.py` even though module-level code calls it (and the graph contains
+  that CALLS edge) — a genuine false positive, reported upstream to stitchgraph.
+
+### `coverage-drift` — what the e2e layer uniquely buys (new in this run)
+
+Comparing the suite without e2e (705 tests) against the full suite: the e2e layer
+adds test exposure for **194 functions that nothing else executes** — including
+`PaymentVerifier.attach_p2p_node`, the whole `replication/admission.rs` gate
+(`admit_hints`, `is_in_paid_close_group`), and the engine start-up loops. Lost: 0.
+If e2e is ever skipped "because it's slow", those 194 functions are untested.
+
+---
+
 ## Appendix: how this report was produced
 
 ```bash
