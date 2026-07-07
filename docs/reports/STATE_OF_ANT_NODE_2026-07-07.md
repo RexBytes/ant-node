@@ -55,7 +55,8 @@ being reported here, and resolution artifacts are called out as such.
 
 - `cargo fmt --all -- --check`: **clean**.
 - `cargo clippy --all-targets --all-features -- -D warnings` (CI's exact flags):
-<!-- CLIPPY_RESULTS -->
+  **clean** — zero warnings across all targets, including the panic/unwrap/expect
+  lints the project standards mandate.
 
 ### Dependency audit
 
