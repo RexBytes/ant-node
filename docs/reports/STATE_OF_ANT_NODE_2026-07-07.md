@@ -192,12 +192,41 @@ so payment-verifier gap numbers below are slightly overstated.
 
 ### `find-modes` — the POD (behavioural modes)
 
-- The suite exercises **16 dominant behavioural modes** (intrinsic dimensionality
-  42 at the energy threshold). The top mode (44.6% of coverage energy) is the
-  test-harness storage/quote/verifier attach path — i.e. most tests share the same
-  setup spine. The next modes are cleanly interpretable: Merkle tree build/hash
-  (9.9%), payment verify + cache (5.6%), LMDB space accounting (3.7%), commitment
-  state (2.2%), audit protocol (1.9%), quorum/config decoding (1.6%).
+The suite decomposes (POD/SVD of the per-test coverage matrix) into **16 dominant
+behavioural modes** — statistically independent bundles of functions that tend to
+be exercised together — capturing the bulk of coverage variance at an intrinsic
+dimensionality of 42. Each mode is what a group of tests *actually does at runtime*,
+which is why several cross module boundaries. Read top-down: mode 1 is the shared
+setup spine every test pays for; the rest are the distinct behaviours the suite
+verifies.
+
+| # | Energy | What this mode exercises | Primary modules | Representative tests |
+|--:|--:|---|---|---|
+| 1 | **44.6%** | **Node/test-harness setup spine** — spin up LMDB storage, build a quote generator, attach the payment verifier. Nearly every test pays this cost, which is why it dominates. | `storage/lmdb.rs`, `payment/quote.rs`, `payment/verifier.rs` | `test_late_joiner_replicates_responsible_chunks` |
+| 2 | 9.9% | **Merkle commitment build & verify** — leaf/node hashing, tree build, sign/verify the storage commitment payload. | `replication/commitment.rs` | `honest_responder_passes_audit`, `fabricated_fraction_is_caught…` |
+| 3 | 5.6% | **Payment verification + verified-cache** — `verify_payment` path, EVM config, "already paid?" cache lookups. | `payment/verifier.rs`, `payment/cache.rs` | `test_legacy_paid_median_full_path_accepted` |
+| 4 | 3.7% | **LMDB store/space accounting** — put/try_put, address compute, disk-space checks, map sizing. | `storage/lmdb.rs` | `test_put_and_get_chunk`, `test_chunk_persist_across_restart` |
+| 5 | 2.2% | **Commitment state rotation** — build-from-tree, rotate current/recent slots, prune retired slots. | `replication/commitment_state.rs`, `commitment.rs` | `retire_current_hides_current_but_keeps_recent…` |
+| 6 | 1.9% | **Storage-bound audit challenge** — compute audit digest, serve raw bytes, sample-count/limit config. | `storage/lmdb.rs`, `replication/{config,protocol}.rs` | `prune_deletes_at_proof_threshold…` |
+| 7 | 1.6% | **Quorum & config decoding** — quorum/confirm thresholds, key-evidence evaluation, xor-name/peer-id decode. | `replication/quorum.rs`, `config.rs` | `paid_list_majority_uses_self_inclusive_paid_group_size` |
+| 8 | 1.5% | **Signed binary-upgrade cache** — verify-key handling, archive fetch, oversized/wrong-size rejection. | `upgrade/binary_cache.rs` | `test_wrong_size_signature_is_rejected_before_copy` |
+| 9 | 1.4% | **Quote pricing** — `calculate_price`, records-stored derivation, quoting metrics. | `payment/{verifier,quote,pricing}.rs` | `scenario_1_and_24_fresh_replication…` |
+| 10 | 1.4% | **Config defaults** — the `*Config::default` family (payment, storage, upgrade, node). | `config.rs` | `test_build_upgrade_monitor_staged_rollout_enabled` |
+| 11 | 1.3% | **Verifier construction** — verifier/quote/cache wiring, test-verifier + candidate-node fixtures. | `payment/{verifier,quote,cache}.rs` | `prune_deletes_at_proof_threshold…` |
+| 12 | 1.1% | **Replication queue admission** — queue new, dedupe by key, add-pending-verify. | `replication/scheduling.rs`, `payment/{quote,metrics}.rs` | `scenario_3_neighbor_sync_quorum_pass_full_pipeline` |
+| 13 | 1.1% | **Audit-attack PoC harness** — responder/keypair/content fixtures for the commitment-audit attack suite. | `tests/poc_commitment_audit_attacks.rs` | `relay_unable_to_serve_bytes_fails_deterministically…` |
+| 14 | 1.0% | **Repair-proof maturity** — record/mature replica-hint, reconcile close group (the issue #1 contract). | `replication/{scheduling,types}.rs`, `payment/cache.rs` | `test_prune_pass_requires_remote_confirmation_before_delete` |
+| 15 | 1.0% | **Admission + paid-list gate** — admitted?, send replication response, paid-list membership. | `replication/{scheduling,mod,paid_list}.rs` | `scenario_8_duplicate_key_not_double_queued` |
+| 16 | 0.8% | **Neighbor-sync scheduling** — cycle setup, peer selection, cooldown, batch selection, paid-list counts. | `replication/{neighbor_sync,paid_list,types}.rs` | `scenario_38_mid_cycle_peer_join_prioritized` |
+
+Two things worth noting from the decomposition: mode 1 alone is 44.6% of the energy —
+tests spend most of their runtime in shared setup, so *behaviour*-level differences
+between tests are concentrated in the long tail (modes 2–16). And modes 14–16 map
+almost exactly onto the replication security machinery (repair proofs, admission
+gate, neighbor-sync) that §4's hidden-coupling and issue #1 flag — the suite does
+exercise those paths, it just does so through a handful of e2e scenarios (see
+`coverage-drift`, §11).
+
 - **A minimal covering set of 124 tests (16% of the suite) reaches every function
   any test reaches.** `test-order` puts `test_prune_veto_for_committed_out_of_range_key`
   first (205 new functions), then `test_late_joiner_replicates_responsible_chunks`
@@ -240,6 +269,34 @@ dynamic-dispatch blind spot. The static findings in this report can be trusted.
   `src/replication/mod.rs` to 🟠 alongside `payment/verifier.rs` — the engine file
   is executed by more behaviours than its static centrality suggests.
 
+### `find-outlier-tests` — tests that stand alone behaviourally
+
+All 20 top outliers are the **unique** kind (high residual against the mode basis,
+tiny breadth) — tests that exercise a behaviour almost nothing else touches:
+`test_write_read_roundtrip` and the `release_cache` TTL/repo tests (0.90+ residual),
+`apply_revocation_strips_on_digest_mismatch_retains_on_timeout`, and the
+commitment-credit `forget_*` / `per_key_cap_evicts_oldest` tests. **These are your
+highest-value-per-test cases** — losing one loses coverage of a behaviour no other
+test provides, so they should never be deleted in a redundancy pass and are the
+first tests to protect when refactoring their subsystem. (No `smoke`-kind outliers,
+i.e. no single test touches everything — a healthy sign.)
+
+### `co-change` — what moves with `PaymentVerifier.verify_payment`
+
+For change planning: the functions most behaviourally coupled to `verify_payment`
+(share the most tests, so edit them together and test them together) are
+`verify_payment_inner` and `payment_proof_type_label` (score 1.0, 63 shared tests),
+`check_payment_required` (0.97), then `VerifiedCache` insert/contains. This is the
+runtime-grounded neighbourhood to review as a unit when touching payment
+verification — distinct from `impact_of`'s static blast radius.
+
+### `feature-map`
+
+Feeds the mode table above: it expands each of the 16 modes into its implementing
+functions × files × the tests that express it (757 tests, 694 functions, matrix
+density 2.5%). Useful as the drill-down behind any single mode — e.g. "show me every
+function and test in the Merkle-commitment mode."
+
 ### `select-tests` — demo on the actual release-to-HEAD changeset
 
 For the two functions that changed since 0.14.2
@@ -250,7 +307,42 @@ says **3 e2e prune tests actually executed them**
 `test_prune_veto_for_committed_out_of_range_key`); the static blast radius adds 137
 more candidates. Running those 3 first is the fast regression check for that change.
 
-## 8. Project pulse
+## 8. Navigation & query operations (for day-to-day dev / agent use)
+
+Beyond the repo-wide analyses, stitchgraph exposes per-symbol queries that are the
+fast way to answer "who calls this / where does this flow / where's the code that
+does X" without grepping. Verified working on this index:
+
+- **`trace-path <src> <sink>`** — full call path between two symbols. E.g.
+  `main → RunningNode.run → start_protocol_routing → try_handle_request →
+  handle_put → handle_put_inner → LmdbStorage.put` (6 hops, §3). This is the fastest
+  way to understand an end-to-end flow.
+- **`get-callees <symbol>`** / **`get-callers <symbol>`** — direct edges in/out of a
+  function. ⚠️ **Rust caveat**: calls wrapped in a macro (`assert!(verify_path(…))`)
+  are recorded as REFERENCES, not CALLS, so `get-callers` can report a confident
+  *empty* for a function that is in fact called only from `assert!`/`debug_assert!`
+  (e.g. `commitment.rs::verify_path`). Cross-check with `find-symbol` references
+  before trusting a "no callers" result.
+- **`find-symbol <name>`** — all definitions of a name (handles the `new`/`put`
+  overload collisions by listing each distinct node).
+- **`get-matrix <subsystem>`** — bounded call/PDG/value-flow submatrix for one file,
+  compact enough to hand to an LLM. Ran clean on `payment/pricing.rs`.
+- **`find-similar <snippet>`** (semantic or `--mode structure` for body-shape clone
+  detection) and **`find-component <purpose>`** (locate the public symbol that does
+  X) — both work but return honestly low confidence (0.7–0.9) on this repo; treat as
+  ranked leads, not answers. `find-component "decide which records to delete when
+  storage is full"` correctly surfaced `LmdbStorage.delete` and the quote
+  records-stored path.
+- **`summarize-subsystem <path>`** — node counts, public surface, and cross-file
+  dependencies for a directory; used to build §3.
+- **`type-at <file> <line>`** — LSP-only; returns the resolved type at a position
+  (needs a site rust-analyzer has type info for).
+
+For agents: the shipped `AGENTS.md` rules of engagement apply — query the graph
+before grepping, `impact_of` before editing, and respect the envelope
+(`needs_review: true` = "unreached by analysis", not "proven dead").
+
+## 9. Project pulse
 
 - **Activity**: 235 commits since 2026-05-01; last commit 2026-07-03. Main authors
   all-time: Chris O'Neil (159), Warm Beer (71), grumbach (40), Mick van Dijke (17).
@@ -264,7 +356,7 @@ more candidates. Running those 3 first is the fast regression check for that cha
 - **Docs**: unusually strong — full replication spec (`REPLICATION_DESIGN.md`),
   infrastructure runbook, testnet plans, ADRs.
 
-## 9. Recommended actions, ranked
+## 10. Recommended actions, ranked
 
 1. **`cargo update -p crossbeam-epoch`** — one line, unblocks the CI audit job
    before RUSTSEC-2026-0204 turns it red.
@@ -284,7 +376,7 @@ more candidates. Running those 3 first is the fast regression check for that cha
 
 ---
 
-## 10. Addendum: full re-run with `--lsp` (rust-analyzer)
+## 11. Addendum: full re-run with `--lsp` (rust-analyzer)
 
 The entire battery above was re-run against an index built with
 `stitchgraph reindex . --lsp` (rust-analyzer 1.94.1 as the type oracle;
