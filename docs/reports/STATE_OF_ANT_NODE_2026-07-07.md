@@ -19,16 +19,19 @@ being reported here, and resolution artifacts are called out as such.
    bootstrap from draining, which silently disables audits and the reputation system
    on the victim. The PoC currently *passes by asserting the buggy behaviour*. This is
    the highest-value open work item in the repo.
-3. **`src/payment/verifier.rs` and `src/replication/types.rs` are the risk hotspots**
+3. **A fresh RUSTSEC advisory will break CI's audit job**: `crossbeam-epoch` 0.9.18
+   (RUSTSEC-2026-0204, published 2026-07-06). One-line fix:
+   `cargo update -p crossbeam-epoch`.
+4. **`src/payment/verifier.rs` and `src/replication/types.rs` are the risk hotspots**
    (churn × graph centrality). Both are large, central, and frequently edited — review
    changes there with extra care and prefer `impact_of` before touching them.
-4. **Hidden coupling is real and already biting**: `audit.rs ↔ neighbor_sync.rs`
+5. **Hidden coupling is real and already biting**: `audit.rs ↔ neighbor_sync.rs`
    co-change with no structural edge — exactly the implicit repair-proof contract
    tracked in issue #1. The recommended fix (shared close-group function + round-trip
    contract test) is still unimplemented.
-5. **Three live-testnet tests are `#[ignore]`d** pending a rewrite for saorsa-core
+6. **Three live-testnet tests are `#[ignore]`d** pending a rewrite for saorsa-core
    0.16 (`dht_put`/`dht_get` removed) — that coverage gap is invisible in green CI runs.
-6. **Essentially no dead code.** One dead shell function
+7. **Essentially no dead code.** One dead shell function
    (`get_worker_nodes` in `scripts/testnet/churn-test.sh:43`) — that's the entire
    stale-code report. Zero implementation holes (references to missing/stubbed code).
 
@@ -56,7 +59,21 @@ being reported here, and resolution artifacts are called out as such.
 
 ### Dependency audit
 
-<!-- CARGO_AUDIT_RESULTS -->
+`cargo audit` (685 locked crates, advisory DB of 2026-07-07): **1 vulnerability, 9 warnings.**
+
+- 🔴 **RUSTSEC-2026-0204 — `crossbeam-epoch` 0.9.18** (published **2026-07-06**, the
+  day before this report): invalid pointer dereference in the `fmt::Pointer` impl.
+  Fixed in ≥ 0.9.20. Transitive via `rayon` ← `saorsa-pqc`/`saorsa-core` (the PQC
+  stack); 0.9.20 is semver-compatible, so **`cargo update -p crossbeam-epoch` is the
+  whole fix** — do it before the next CI run, because the CI `cargo audit` job will
+  go red on this advisory.
+- ⚠️ Unsound: `anyhow` 1.0.102 (RUSTSEC-2026-0190, `Error::downcast_mut()` —
+  ant-node uses anyhow pervasively; worth a bump when a fixed release lands).
+- ⚠️ Unmaintained: `atomic-polyfill`, `bincode` 1.3.3, `derivative`, `paste`,
+  `proc-macro-error2`, `rustls-pemfile`. `bincode` 1.x matters most — it sits on
+  the wire/serialization path of several deps; the ecosystem is moving to bincode 2.
+- ⚠️ Yanked: `bitcoin-io` 0.1.100, `bitcoin_hashes` 0.14.100 (pulled in via the EVM
+  stack).
 
 ---
 
