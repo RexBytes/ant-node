@@ -1,0 +1,3402 @@
+{
+  "ok": true,
+  "result": {
+    "order": [
+      {
+        "test": "storage::handler.tests.test_quote_already_stored_flag",
+        "new_functions": 47
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.closeness_is_observe_only_far_keys_still_pass",
+        "new_functions": 43
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_median_tie_accepts_paid_candidate",
+        "new_functions": 29
+      },
+      {
+        "test": "node::tests.test_build_upgrade_monitor_staged_rollout_enabled",
+        "new_functions": 27
+      },
+      {
+        "test": "replication::commitment_state.tests.re_acquire_after_retire_advertises_fresh_current_without_resurrecting_stale",
+        "new_functions": 17
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_fifo_cached_archive_does_not_hang",
+        "new_functions": 17
+      },
+      {
+        "test": "replication::scheduling.tests.scenario_3_neighbor_sync_quorum_pass_full_pipeline",
+        "new_functions": 16
+      },
+      {
+        "test": "payment::verifier.tests.test_fresh_contexts_enforce_merkle_closeness",
+        "new_functions": 11
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_23_paid_list_entry_removed",
+        "new_functions": 11
+      },
+      {
+        "test": "replication::quorum.tests.paid_list_majority_uses_self_inclusive_paid_group_size",
+        "new_functions": 11
+      },
+      {
+        "test": "upgrade::release_cache.tests.test_write_read_roundtrip",
+        "new_functions": 11
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_remove_key_clears_all_peer_entries",
+        "new_functions": 10
+      },
+      {
+        "test": "replication::neighbor_sync.tests.failure_replacement_prefers_remaining_priority_peer",
+        "new_functions": 9
+      },
+      {
+        "test": "replication::recent_provers.tests.forget_commitment_drops_only_matching_entries",
+        "new_functions": 9
+      },
+      {
+        "test": "replication::audit.tests.audit_response_must_match_key_count",
+        "new_functions": 8
+      },
+      {
+        "test": "storage::handler.tests.test_quote_metric_reflects_deletions",
+        "new_functions": 8
+      },
+      {
+        "test": "upgrade::monitor.tests.test_process_release_upgrade_available",
+        "new_functions": 8
+      },
+      {
+        "test": "replication::subtree.tests.fabricated_nonced_hash_caught_by_spotcheck_probability",
+        "new_functions": 7
+      },
+      {
+        "test": "payment::wallet.tests.test_wallet_config_new",
+        "new_functions": 6
+      },
+      {
+        "test": "poc_d1_per_sender_counter_is_consistent",
+        "new_functions": 6
+      },
+      {
+        "test": "replication::bootstrap.tests.capacity_rejected_clears_on_clean_cycle",
+        "new_functions": 6
+      },
+      {
+        "test": "replication::commitment.tests.paths_verify_for_every_key_at_various_sizes",
+        "new_functions": 6
+      },
+      {
+        "test": "replication::pruning.tests.confirmed_keys_defer_below_quorum_or_missing_peer_evidence",
+        "new_functions": 6
+      },
+      {
+        "test": "replication::tests.apply_revocation_strips_on_digest_mismatch_retains_on_timeout",
+        "new_functions": 6
+      },
+      {
+        "test": "payment::cache.tests.test_cache_basic_operations",
+        "new_functions": 5
+      },
+      {
+        "test": "replication::config.tests.random_intervals_within_bounds",
+        "new_functions": 5
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_discover_env_var",
+        "new_functions": 4
+      },
+      {
+        "test": "payment::quote.tests.test_wire_ml_dsa_signer_returns_ok_with_valid_identity",
+        "new_functions": 4
+      },
+      {
+        "test": "payment::verifier.tests.closeness_match_accepts_at_exactly_majority",
+        "new_functions": 4
+      },
+      {
+        "test": "replication::audit.tests.audit_digest_failure_reason_is_digest_mismatch_for_mixed_failures",
+        "new_functions": 4
+      },
+      {
+        "test": "replication::commitment.tests.sign_and_verify_roundtrip",
+        "new_functions": 4
+      },
+      {
+        "test": "replication::tests.losing_lottery_still_consumes_cooldown_window",
+        "new_functions": 4
+      },
+      {
+        "test": "storage::handler.tests.test_cache_insert_is_visible",
+        "new_functions": 4
+      },
+      {
+        "test": "storage::handler.tests.test_exists_and_local_access",
+        "new_functions": 4
+      },
+      {
+        "test": "upgrade::apply.tests.test_default_impl",
+        "new_functions": 4
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_from_tar_gz",
+        "new_functions": 4
+      },
+      {
+        "test": "upgrade::tests.test_default_impl",
+        "new_functions": 4
+      },
+      {
+        "test": "node::tests.test_explicit_root_dir_persists_across_restarts",
+        "new_functions": 3
+      },
+      {
+        "test": "payment::verifier.tests.closeness_waiter_reads_leaders_published_failure",
+        "new_functions": 3
+      },
+      {
+        "test": "poc_d1_fetch_queue_is_capacity_bounded",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::admission.tests.out_of_range_keys_rejected_by_distance",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::audit.tests.audit_failure_summary_leaves_unclassified_rejections_out_of_absent_mismatch_counts",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::audit.tests.expired_bootstrap_claim_does_not_remove_peer_from_audit_eligibility",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::bootstrap.tests.increment_and_decrement_pending_requests",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::bootstrap.tests.track_discovered_keys_accumulates",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::neighbor_sync.tests.cycle_completion_resets_cursor_but_keeps_sync_times",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::paid_list.tests.paid_prune_cursor_advances_even_without_selected_entry",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_49_bootstrap_claim_cleared",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_52_paid_and_record_timestamps_independent",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::possession.tests.absent_sentinel_is_failed",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::protocol.tests.audit_challenge_roundtrip",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::pruning.tests.paid_prune_peer_budget_allows_overlapping_targets",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::pruning.tests.prune_cursor_advances_even_when_no_candidate_selected",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::quorum.tests.scenario_33_batched_response_per_key_evidence",
+        "new_functions": 3
+      },
+      {
+        "test": "replication::subtree.tests.detection_uniform_fast_clustered_floor",
+        "new_functions": 3
+      },
+      {
+        "test": "storage::handler.tests.test_get_not_found",
+        "new_functions": 3
+      },
+      {
+        "test": "storage::handler.tests.test_merkle_candidate_quote_request",
+        "new_functions": 3
+      },
+      {
+        "test": "storage::handler.tests.test_storage_stats",
+        "new_functions": 3
+      },
+      {
+        "test": "storage::lmdb.tests.test_all_keys",
+        "new_functions": 3
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_from_zip",
+        "new_functions": 3
+      },
+      {
+        "test": "upgrade::rollout.tests.test_delay_within_range",
+        "new_functions": 3
+      },
+      {
+        "test": "upgrade::tests.test_downgrade_prevention",
+        "new_functions": 3
+      },
+      {
+        "test": "upgrade::tests.test_restore_from_backup",
+        "new_functions": 3
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_search_paths_contains_exe_dir",
+        "new_functions": 2
+      },
+      {
+        "test": "node::tests.test_build_core_config_dual_stack_by_default",
+        "new_functions": 2
+      },
+      {
+        "test": "node::tests.test_identity_persisted_across_restarts",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::cache.tests.test_cache_clear",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::cache.tests.test_cache_stats",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::cache.tests.test_cache_verification_levels_do_not_downgrade_or_over_authorize",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::cache.tests.test_default_impl",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::pricing.tests.test_derive_records_stored_from_baseline_or_lower_is_zero",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::pricing.tests.test_one_record_above_baseline",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::quote.tests.test_create_quote",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::quote.tests.test_rewards_address_getter",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_cross_key_rejection",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::verifier.tests.closeness_lookup_count_uses_max_of_width_and_pool_len",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::verifier.tests.test_cache_len_getter",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::verifier.tests.test_fresh_contexts_reject_content_mismatch",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_paid_list_admission_enforces_issuer_k_closest",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_address_mismatch_rejected",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::verifier.tests.test_payment_status_is_cached",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::wallet.tests.test_get_rewards_address_none",
+        "new_functions": 2
+      },
+      {
+        "test": "payment::wallet.tests.test_is_valid_address",
+        "new_functions": 2
+      },
+      {
+        "test": "poc_d1_set_pending_state_keeps_counter_consistent",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::audit.tests.audit_key_filter_retains_stable_proofs_and_rejects_evicted_peers",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::audit.tests.classify_audit_send_error_uses_bounded_classes",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::audit.tests.first_challenged_key_label_falls_back_when_empty",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::bootstrap.tests.mark_bootstrap_drained_sets_flag",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::commitment_state.tests.built_commitment_proof_verifies_under_its_own_root",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::commitment_state.tests.clear_all_drops_every_slot",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::config.tests.audit_response_timeout_fits_honest_hdd_at_typical_sample_size",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::config.tests.audit_tick_interval_inverted_rejected",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::config.tests.storage_admission_width_adds_margin",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::paid_list.tests.test_all_keys",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::paid_list.tests.test_remove_batch",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::possession.tests.possession_success_clears_active_bootstrap_claim_but_keeps_history",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::possession.tests.random_delay_is_within_bounds",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::protocol.tests.error_display_deserialization_failed",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.audit_digest_proof_requires_matching_peer_key_nonce_and_bytes",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.paid_confirmations_count_only_confirmed_target_peers",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.paid_prune_confirmations_are_three_quarters_rounded_up",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.prune_audit_challenges_are_one_per_candidate_peer",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.prune_audit_clear_policy_requires_decoded_non_bootstrap_response",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.prune_audit_failure_penalty_is_reserved_once_per_peer_per_pass",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.prune_audit_normal_response_clears_stale_bootstrap_claim",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.prune_bootstrap_abuse_penalty_is_reserved_once_per_peer_per_pass",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::pruning.tests.prune_proofs_needed_tolerates_exactly_one_lagging_peer",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::quorum.tests.mark_unresolved_sets_all_keys_for_peer",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::quorum.tests.present_sources_for_key_filters_targets_and_deduplicates",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::recent_provers.tests.per_key_cap_evicts_oldest",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::scheduling.tests.add_pending_verify_duplicate_rejected",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::scheduling.tests.retry_fetch_nonexistent_returns_none",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::scheduling.tests.scenario_8_replica_and_paid_hint_collapses_to_replica",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::subtree.tests.spotcheck_always_yields_exactly_min_k_n_distinct_indices",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::tests.audit_timeout_preserves_active_bootstrap_claim",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::tests.first_failed_key_label_falls_back_when_empty",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::tests.fresh_offer_runs_client_put_payment_checks",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::tests.paid_notify_uses_paid_list_admission_payment_checks",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::types.tests.bootstrap_drain_requires_empty_pending_keys",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::types.tests.bootstrap_state_default_matches_new",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::types.tests.fetch_candidate_same_distance_and_key_is_equal",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_retain_sync_peers_prunes_only_departed_peers",
+        "new_functions": 2
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_remove_peer_requires_fresh_hint_after_reentry",
+        "new_functions": 2
+      },
+      {
+        "test": "storage::handler.tests.test_protocol_id",
+        "new_functions": 2
+      },
+      {
+        "test": "storage::handler.tests.test_put_rejected_on_insufficient_disk_before_verification",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::apply.tests.test_current_binary_path",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::monitor.tests.test_check_interval",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::monitor.tests.test_monitor_current_version",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::monitor.tests.test_monitor_repo",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::monitor.tests.test_select_upgrade_beta_accepts_prerelease_if_newest",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::rollout.tests.test_max_delay_hours_getter",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::rollout.tests.test_version_specific_delays",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::signature.tests.test_embedded_key_rejects_invalid_signature",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::tests.test_atomic_replacement",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::tests.test_auto_upgrade_supported_on_all_platforms",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::tests.test_enforce_max_binary_size_accepts_small",
+        "new_functions": 2
+      },
+      {
+        "test": "upgrade::tests.test_tempdir_in_target_dir",
+        "new_functions": 2
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_from_file",
+        "new_functions": 1
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_from_file_invalid_toml",
+        "new_functions": 1
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_parse_empty_peers",
+        "new_functions": 1
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_parse_missing_peers_field",
+        "new_functions": 1
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_parse_valid_toml",
+        "new_functions": 1
+      },
+      {
+        "test": "config::tests.test_default_config_has_cache_capacity",
+        "new_functions": 1
+      },
+      {
+        "test": "config::tests.test_default_evm_network",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_build_core_config_ipv4_only",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_build_core_config_sets_development_mode_permissive",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_build_core_config_sets_production_mode",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_build_upgrade_monitor_staged_rollout_disabled",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_multiple_identities_errors",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_peer_id_hex_length",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_resolve_identity_first_run_creates_identity",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_resolve_identity_loads_existing",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_scan_identity_dirs_empty_dir",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_scan_identity_dirs_finds_multiple",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_scan_identity_dirs_finds_one",
+        "new_functions": 1
+      },
+      {
+        "test": "node::tests.test_scan_identity_dirs_nonexistent_dir",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_cache_lru_eviction",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_cache_stats_copy",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_clear_does_not_reset_stats",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_concurrent_insert_and_contains",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_hit_rate_all_hits",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_hit_rate_all_misses",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_hit_rate_zero_total",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::cache.tests.test_with_capacity_zero_defaults_to_one",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::metrics.tests.test_new_tracker",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::metrics.tests.test_record_store_increments_counter",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::metrics.tests.test_set_records_resyncs_to_authoritative_count",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_at_divisor_is_baseline_plus_k",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_baseline_is_nonzero_spam_barrier",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_derive_records_stored_from_max_price_saturates_no_panic",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_derive_records_stored_from_price_round_trips",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_double_divisor_is_baseline_plus_four_k",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_large_value_no_overflow",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_price_deterministic",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_price_increases_monotonically",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_price_increases_with_records",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_quadratic_growth_excluding_baseline",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_small_record_counts_near_baseline",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_smooth_pricing_no_staircase",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_triple_divisor_is_baseline_plus_nine_k",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::pricing.tests.test_zero_records_gets_baseline",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_can_sign_after_set_signer",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_create_merkle_candidate_quote_with_ml_dsa",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_create_quote_different_data_types",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_create_quote_large_size",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_create_quote_zero_size",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_empty_signature_fails_verification",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_generator_without_signer",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_pricing_tracks_attached_storage_not_side_counter",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_probe_signer_fails_with_empty_signature",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_probe_signer_fails_without_signer",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_quote_signature_round_trip_real_keys",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_record_store_delegation",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_records_stored",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_empty_pub_key",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_empty_signature",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_tampered_price",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_tampered_pub_key",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_tampered_reward_address",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_tampered_signature_byte",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_valid_signature",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_wrong_length_pub_key",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_merkle_candidate_wrong_length_signature",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_quote_content",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::quote.tests.test_verify_quote_signature_empty_pub_key",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_lookup_timeout_is_240s",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_lookup_width_is_32",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_match_accepts_honest_skew_via_exact_matches",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_match_passes_when_all_16_candidates_in_top_16",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_match_passes_when_candidates_span_positions_1_to_15_and_17",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_match_rejects_forged_pool",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_match_rejects_pool_below_majority",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_match_returns_sparse_dht_error_when_lookup_too_small",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_pass_cache_short_circuits_second_call",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_rejects_pool_with_duplicate_candidate_pub_keys",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_required_threshold_is_majority",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.closeness_single_flight_concurrent_readers_share_one_verification",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.paid_quote_issuer_closeness_width_uses_k",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_cache_hit",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_cache_preload_bypasses_evm",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_cache_stats_after_operations",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_concurrent_cache_lookups",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_content_address_mismatch_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_default_evm_config",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_future_quote_uses_storage_delta_not_timestamp",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_above_median_verifier_rejected_by_floor",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_paid_list_admission_enforces_full_bundle_floor",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_paid_median_floor_rejection",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_paid_median_full_path_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_paid_median_issuer_k_closest_rejection",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_paid_quote_bad_signature_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_paid_quote_content_mismatch_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_single_quote_proof_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_single_quote_proof_requires_three_x_payment",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_structural_majority_price_at_median_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_too_many_quotes_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_unpaid_peer_binding_mismatch_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_unpaid_quote_bad_signature_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_unpaid_quote_content_mismatch_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_legacy_zero_price_median_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_malformed_single_node_proof",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_malformed_body_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_paid_node_address_mismatch_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_paid_node_index_out_of_bounds_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_proof_serialized_size_within_limits",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_proof_tag_is_correct",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_tagged_proof_invalid_data_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_tampered_candidate_signature_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_timestamp_mismatch_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_underpayment_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_merkle_wrong_depth_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_old_quote_uses_storage_delta_not_timestamp",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_paid_list_cache_entry_does_not_satisfy_client_put",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_payment_required_for_new_data",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_payment_status_can_store",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_pool_cache_concurrent_access",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_pool_cache_eviction",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_pool_cache_insert_and_lookup",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_proof_at_max_boundary_unknown_tag",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_proof_at_min_boundary_unknown_tag",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_proof_too_large",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_proof_too_small",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_quote_23h_old_still_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_quote_beyond_clock_skew_still_uses_storage_delta",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_quote_within_clock_skew_tolerance_accepted",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_real_ml_dsa_proof_size_within_limits",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_single_node_tagged_proof_deserialization",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_verify_payment_cached",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_verify_payment_without_proof_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::verifier.tests.test_wrong_peer_binding_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_address_with_spaces",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_all_ff_address",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_all_zeros_address",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_empty_string",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_get_rewards_address_some",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_invalid_hex_chars",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_invalid_length",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_invalid_prefix",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_just_0x_prefix",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_parse_lowercase_address",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_parse_valid_address",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_too_long_address",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_uppercase_0x_prefix",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_wallet_config_invalid_address",
+        "new_functions": 1
+      },
+      {
+        "test": "payment::wallet.tests.test_wallet_config_no_address",
+        "new_functions": 1
+      },
+      {
+        "test": "poc_d1_bound_preserves_legitimate_entries",
+        "new_functions": 1
+      },
+      {
+        "test": "poc_d1_flooding_peer_cannot_starve_honest_peer",
+        "new_functions": 1
+      },
+      {
+        "test": "poc_d1_pending_verify_is_globally_bounded",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::admission.tests.admission_result_empty_inputs",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::admission.tests.config_close_group_sizes_are_valid",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::admission.tests.cross_set_precedence_replica_wins",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::admission.tests.deduplication_across_sets",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::admission.tests.deduplication_within_replica_hints",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::admission.tests.scenario_5_sender_does_not_grant_key_relevance",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::admission.tests.scenario_7_out_of_range_key_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.absent_sentinel_is_all_zeros",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.audit_digest_failure_reason_is_key_absent_when_all_confirmed_failures_are_absent",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.audit_digest_uses_full_record_bytes",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.audit_failure_summary_counts_confirmed_absent_and_mismatch_keys",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.bootstrapping_skips_digest_computation",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.digest_verification_matching",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.digest_verification_mismatching_data",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.digest_verification_mismatching_key",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.digest_verification_mismatching_nonce",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.digest_verification_mismatching_peer",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.first_challenged_key_label_truncates_to_16_hex_chars",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.handle_challenge_absent_keys_returns_sentinel",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.handle_challenge_bootstrapping_returns_bootstrapping_response",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.handle_challenge_empty_keys_returns_empty_digests",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.handle_challenge_mixed_present_and_absent",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.handle_challenge_present_keys_returns_correct_digests",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_19_partial_failure_mixed_responsibility",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_29_audit_start_gate_during_bootstrap",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_30_audit_peer_selection_from_sampled_keys",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_32_dynamic_challenge_size",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_47_bootstrap_claim_grace_period_audit",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_53_partial_failure_mixed_responsibility",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_54_all_digests_pass",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_55_no_confirmed_responsibility_no_evidence",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::audit.tests.scenario_56_repair_opportunity_filters_never_synced",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::bootstrap.tests.capacity_rejected_is_per_source",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::bootstrap.tests.check_drained_blocked_by_pending_requests",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::bootstrap.tests.check_drained_blocked_by_queued_key",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::bootstrap.tests.check_drained_transitions_when_all_work_done",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::bootstrap.tests.check_drained_when_already_drained",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.commitment_hash_differs_on_any_field_change",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.commitment_hash_signature_length_change_changes_hash",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.commitment_hash_stable_for_identical_input",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.duplicate_keys_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.empty_key_set_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.out_of_protocol_key_count_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.out_of_range_leaf_index_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.path_for_absent_key_is_none",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.root_is_deterministic_regardless_of_input_order",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.signature_fails_under_swapped_public_key",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.signature_fails_when_root_tampered",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.signature_fails_with_garbage_bytes",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.signature_fails_with_garbage_public_key",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.single_leaf_tree_root_is_leaf_hash",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.tampered_bytes_hash_breaks_path_verify",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.tampered_path_node_breaks_verify",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.too_many_keys_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.two_leaf_tree_root_combines_both_leaves",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.wrong_leaf_index_breaks_verify",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.wrong_path_length_rejected_pre_hashing",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment.tests.zero_key_count_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.built_commitment_hash_matches_global_hash",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.current_plus_last_two_gossiped_are_simultaneously_answerable",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.empty_state_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.gossiped_commitment_stays_answerable_across_rotations",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.is_held_tracks_keys_across_the_retention_window_and_ages_them_out",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.lookup_arc_outlives_subsequent_rotation",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.proof_for_absent_key_is_none",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.recent_gossip_record_stays_answerable_within_ttl",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.retire_current_drops_ungossiped_current",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.retire_current_hides_current_but_keeps_recent_pin_answerable",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.retired_current_ages_out_by_gossip_ttl",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.retired_current_stays_answerable_within_ttl",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.stale_gossip_record_expires_by_ttl_even_without_new_distinct_gossip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::commitment_state.tests.ungossiped_rebuild_does_not_evict_gossiped_commitment",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.audit_failure_weight_is_five",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.audit_response_timeout_floor_at_zero_keys",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.audit_response_timeout_relay_is_outside_envelope",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.audit_response_timeout_saturates_on_huge_k",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.audit_response_timeout_scales_with_key_count",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.audit_sample_count_scales_with_sqrt",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.close_group_size_exceeding_prune_audit_budget_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.close_group_size_zero_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.confirm_needed_is_strict_majority",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.default_prune_hysteresis_is_three_days",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.defaults_pass_validation",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.max_incoming_audit_keys_scales_dynamically",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.neighbor_sync_interval_inverted_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.neighbor_sync_peer_count_zero_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.neighbor_sync_scope_exceeding_k_bucket_size_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.paid_list_close_group_size_zero_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.quorum_needed_uses_smaller_of_threshold_and_majority",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.quorum_threshold_exceeds_close_group_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.quorum_threshold_zero_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.random_interval_equal_bounds_is_deterministic",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.replication_protocol_id_is_v2",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.scenario_18_invalid_config_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.scenario_26_dynamic_paid_threshold_undersized",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.scenario_31_audit_cadence_within_jitter_bounds",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::config.tests.self_lookup_interval_inverted_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.consecutive_rounds_advance_through_full_cycle",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.cycle_complete_when_cursor_past_order",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.handle_sync_failure_no_replacement_when_exhausted",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.handle_sync_failure_removes_peer_after_cursor",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.handle_sync_failure_removes_peer_and_adjusts_cursor",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.handle_sync_failure_unknown_peer_is_noop",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.priority_peer_in_snapshot_is_not_selected_twice",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.priority_peer_on_cooldown_is_skipped_and_removed_from_snapshot",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.record_successful_sync_overwrites_previous",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.record_successful_sync_updates_last_sync_time",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.scenario_35_round_robin_with_cooldown_skip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.scenario_36_post_cycle_triggers_combined_prune_pass",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.scenario_37_non_local_rt_inbound_sync_drops_hints",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.scenario_38_mid_cycle_peer_join_prioritized",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.scenario_39_unreachable_peer_removed_slot_filled",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.scenario_40_cooldown_peer_removed_from_snapshot",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.scenario_41_cycle_always_terminates",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.select_sync_batch_all_on_cooldown",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.select_sync_batch_empty_order",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.select_sync_batch_expired_cooldown_not_skipped",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.select_sync_batch_returns_up_to_peer_count",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::neighbor_sync.tests.select_sync_batch_skips_cooldown_peers",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.paid_prune_cursor_advances_past_selected_window",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.paid_prune_cursor_resets_for_empty_paid_list",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_13_responsible_range_shrink",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_46_bootstrap_claim_first_seen_recorded",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_48_bootstrap_claim_abuse_after_grace_period",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_50_hysteresis_prevents_premature_deletion",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.scenario_51_timestamp_reset_on_heal",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_count",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_insert_and_contains",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_insert_duplicate_returns_false",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_paid_out_of_range_timestamps",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_persistence_across_reopen",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_record_out_of_range_timestamps",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_remove_batch_empty",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_remove_clears_timestamps",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_remove_existing",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::paid_list.tests.test_remove_nonexistent",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::possession.tests.bootstrapping_is_bootstrap_claim",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::possession.tests.bootstrapping_with_wrong_challenge_id_is_failed",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::possession.tests.forged_digest_is_failed",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::possession.tests.matching_digest_is_present",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::possession.tests.mismatched_challenge_id_is_failed",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::possession.tests.rejected_is_failed",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::possession.tests.wrong_arity_is_failed",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.absent_key_digest_is_all_zeros",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.audit_digest_differs_with_different_data",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.audit_digest_differs_with_different_key",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.audit_digest_differs_with_different_nonce",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.audit_digest_differs_with_different_peer",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.audit_digest_is_deterministic",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.audit_response_bootstrapping_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.audit_response_digests_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.decode_rejects_invalid_data",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.decode_rejects_oversized_payload",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.encode_rejects_oversized_message",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.error_display_message_too_large",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.error_display_serialization_failed",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.fetch_request_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.fetch_response_error_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.fetch_response_not_found_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.fetch_response_success_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.fresh_replication_offer_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.fresh_replication_response_accepted_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.fresh_replication_response_rejected_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.max_batch_worst_case_byte_response_fits_wire_cap",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.neighbor_sync_request_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.neighbor_sync_response_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.new_peer_roundtrips_with_commitment_some",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.old_decoder_tolerates_new_neighbor_sync_request",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.old_decoder_tolerates_new_neighbor_sync_response",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.paid_notify_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.real_digest_differs_from_absent_sentinel",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.verification_request_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::protocol.tests.verification_response_roundtrip",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::pruning.tests.confirmed_keys_require_quorum_of_target_peers_present",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::pruning.tests.duplicated_target_peer_counts_once_toward_quorum",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::pruning.tests.paid_confirmations_skip_keys_without_evidence",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::pruning.tests.paid_prune_peer_budget_rejects_new_peers_past_cap",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::pruning.tests.proofs_from_non_target_peers_do_not_count_toward_quorum",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::pruning.tests.prune_cursor_advances_past_selected_budget_window",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::pruning.tests.zero_quorum_never_confirms",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.paid_list_path_unaffected_by_holder_credit",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.paid_list_verified_with_enough_confirmations",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.paid_list_verified_with_single_paid_peer",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.process_response_ignores_unsolicited_keys",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.process_response_missing_key_gets_unresolved",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.process_response_populates_evidence",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_downgrades_uncredited_present_peers",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_failed_when_both_paths_impossible",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_fails_with_zero_targets_no_paid",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_inconclusive_with_unresolved_peers",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_passes_when_all_present_peers_are_credited",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_verified_beats_paid_list_when_both_satisfied",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_verified_with_enough_present_responses",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.quorum_verified_with_undersized_quorum_targets",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_16_timeout_yields_inconclusive",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_20_paid_list_local_hit_bypasses_presence_quorum",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_22_paid_list_rejection_below_threshold",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_27_single_round_collects_both_presence_and_paid",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_28_dynamic_threshold_with_3_targets",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_34_partial_response_unresolved_per_key",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_42_quorum_pass_derives_paid_list_auth",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_44_cold_start_recovery_via_replica_majority",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::quorum.tests.scenario_4_quorum_fail_transitions_to_abandoned",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::recent_provers.tests.empty_cache_credits_no_one",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::recent_provers.tests.forget_peer_drops_all_entries",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::recent_provers.tests.lazy_rotation_via_unknown_commitment_hash_drops_credit",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::recent_provers.tests.other_peer_under_same_hash_not_credited",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::recent_provers.tests.recorded_proof_credits_under_same_hash",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::recent_provers.tests.refresh_in_place_does_not_grow_bucket",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::recent_provers.tests.rotated_hash_loses_credit",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.add_pending_verify_new_key_succeeds",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.add_pending_verify_rejected_if_in_fetch_queue",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.add_pending_verify_rejected_if_in_flight",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.bootstrap_work_empty_when_no_keys_present",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.bootstrap_work_not_empty_when_key_in_pending",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.complete_nonexistent_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.contains_key_absent",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.contains_key_in_fetch_queue",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.contains_key_in_flight",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.contains_key_in_pending",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.dequeue_returns_nearest_first",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.enqueue_dedup_prevents_duplicates",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.evict_stale_keeps_fresh_entries",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.evict_stale_removes_old_entries",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.remove_pending_nonexistent_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.remove_pending_returns_entry",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.retry_fetch_returns_next_untried_source",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.scenario_8_duplicate_key_not_double_queued",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::scheduling.tests.start_and_complete_fetch",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.auditor_holds_nothing_still_catches_deleter",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.commitment_bound_to_another_peer_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.correct_content_address_but_stale_freshness_fails",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.deleter_absent_bytes_is_confirmed_failure",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.fake_storage_garbage_bytes_is_confirmed_failure",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.full_pass_requires_every_sampled_leaf",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.honest_structure_then_bytes_passes",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.omitted_committed_key_is_confirmed_failure",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.sample_size_is_in_3_to_5_band",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.structure_fail_short_circuits_before_round_2",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.subtree_leaf_is_constructible",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.tampered_leaf_structure_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.wrong_leaf_count_structure_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::storage_commitment_audit.tests.wrong_pinned_commitment_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.build_proof_reports_missing_bytes",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.different_nonces_cover_different_branches_over_time",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.honest_proof_verifies_at_many_sizes",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.honest_proof_verifies_for_every_size_and_nonce",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.non_ascending_leaves_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.real_leaves_under_padding_slot_is_zero",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.real_leaves_under_root_is_all",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.responder_cannot_substitute_a_different_branch",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.selection_is_deterministic",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.selection_never_empty_across_many_sizes_and_nonces",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.small_trees_select_whole_tree",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.spotcheck_indices_in_range_and_distinct",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.spotcheck_returns_all_when_subtree_small",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.sqrt_floor_is_exact_ceil",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.subtree_size_near_sqrt_for_balanced_tree",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.tampered_cut_hash_breaks_root",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.tampered_leaf_breaks_root",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::subtree.tests.wrong_leaf_count_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.audit_on_gossip_constants_match_adr",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.confirmed_failures_revoke_credit_timeout_does_not",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.cooldown_is_per_peer_independent",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.cooldown_lets_audit_through_after_the_window",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.decoded_audit_failures_clear_active_bootstrap_claim",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.digest_mismatch_is_not_a_timeout_and_penalizes_immediately",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.first_failed_key_label_truncates_to_16_hex_chars",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.first_failed_key_label_uses_first_key_only",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::tests.gossip_flood_yields_at_most_one_audit_per_cooldown_window",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.bootstrap_claim_active_window_reports_past_grace",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.bootstrap_claim_history_prevents_second_grace_window",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.bootstrap_state_explicit_drained_overrides",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.bootstrap_state_initial_not_drained",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.bootstrap_state_pending_keys_block_drain",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.bootstrap_state_pending_requests_block_drain",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.bootstrap_state_requires_explicit_drain",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.fetch_candidate_nearest_key_has_highest_priority",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.fetch_candidate_same_distance_different_key_is_deterministic",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_cursor_past_end_is_still_complete",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_cycle_completes_when_cursor_reaches_end",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_empty_cycle_is_immediately_complete",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_new_cycle_not_complete",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_priority_queue_blocks_cycle_completion",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_priority_queue_deduplicates_peers",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.neighbor_sync_remove_peer_clears_order_and_priority_queue",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.peer_sync_record_no_sync_many_cycles",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.peer_sync_record_no_sync_yet",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.peer_sync_record_synced_but_no_cycle",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.peer_sync_record_synced_with_cycle",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_opportunity_requires_both_sync_and_cycle",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_evicted_peer_reentry_requires_fresh_hint",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_record_sent_hint_for_close_peer",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_reject_peer_outside_current_close_group",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_repeated_hint_does_not_reset_maturity",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_require_later_epoch",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_require_min_hint_age",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.repair_proofs_retain_stable_peers_on_close_group_change",
+        "new_functions": 1
+      },
+      {
+        "test": "replication::types.tests.verification_state_terminal_variants",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_handle_unexpected_response_message",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_payment_cache_stats_returns_correct_values",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_put_address_mismatch",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_put_already_exists",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_put_and_get_chunk",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_put_chunk_too_large",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_put_same_chunk_twice_hits_cache",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::handler.tests.test_quote_price_drops_after_deletion",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_address_mismatch",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_compute_address",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_delete",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_exists",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_get_not_found",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_get_raw",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_persistence_across_reopen",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_put_and_get",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_put_duplicate",
+        "new_functions": 1
+      },
+      {
+        "test": "storage::lmdb.tests.test_stats",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::apply.tests.test_auto_apply_upgrader_creation",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_empty_file",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_from_tar_gz_nested_path",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_from_zip_with_exe",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_missing_binary_in_tar_gz",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_missing_binary_in_zip",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::apply.tests.test_extract_binary_unknown_format",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_meta_symlink_to_special_file_is_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_miss_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_missing_meta_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_missing_signature_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_oversize_cached_archive_is_rejected_before_copy",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_oversized_meta_is_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_returned_archive_is_private_copy_immune_to_post_hit_swap",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_store_and_get_verified_archive",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_store_archive_rejects_oversize",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_store_rejects_unsigned_archive",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_symlink_cached_archive_is_rejected_before_copy",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_tampered_cached_archive_is_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::binary_cache.tests.test_wrong_size_signature_is_rejected_before_copy",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::cache_dir.tests.test_upgrade_cache_dir_returns_path",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_beta_channel_accepts_beta",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_build_platform_patterns",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_find_platform_asset",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_is_binary_asset",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_parse_github_release",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_prerelease_version",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_process_release_beta_filtered",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_process_release_invalid_tag",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_process_release_no_upgrade_older_version",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_process_release_no_upgrade_same_version",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_select_upgrade_stable_ignores_prerelease",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_stable_channel_filters_beta",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_version_from_tag",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_version_newer_available",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_version_older_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::monitor.tests.test_version_same",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::release_cache.tests.test_corrupted_file_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::release_cache.tests.test_missing_file_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::release_cache.tests.test_ttl_expiry_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::release_cache.tests.test_wrong_repo_returns_none",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::rollout.tests.test_delay_distribution",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::rollout.tests.test_delay_scales_with_max_hours",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::rollout.tests.test_deterministic_delay",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::rollout.tests.test_different_nodes_different_delays",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::rollout.tests.test_empty_node_id",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::rollout.tests.test_large_node_id",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::rollout.tests.test_zero_delay_when_disabled",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_empty_file",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_large_binary",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_nonexistent_file",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_reject_invalid_signature",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_reject_malformed_signature",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_reject_modified_binary",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_reject_wrong_key",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_release_key_configured",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_verify_from_sig_file",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_verify_valid_signature",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::signature.tests.test_wrong_context_rejected",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_backup_created",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_backup_nonexistent_rollback_dir",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_backup_special_filename",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_current_version_getter",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_enforce_max_binary_size_rejects_large",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_large_file_backup",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_permissions_preserved",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_restore_fails_without_backup",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_same_version_prevention",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_upgrade_info",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_upgrade_result_variants",
+        "new_functions": 1
+      },
+      {
+        "test": "upgrade::tests.test_upgrade_validation_passes",
+        "new_functions": 1
+      }
+    ],
+    "minimal_prefix": [
+      "storage::handler.tests.test_quote_already_stored_flag",
+      "replication::storage_commitment_audit.tests.closeness_is_observe_only_far_keys_still_pass",
+      "payment::verifier.tests.test_legacy_median_tie_accepts_paid_candidate",
+      "node::tests.test_build_upgrade_monitor_staged_rollout_enabled",
+      "replication::commitment_state.tests.re_acquire_after_retire_advertises_fresh_current_without_resurrecting_stale",
+      "upgrade::binary_cache.tests.test_fifo_cached_archive_does_not_hang",
+      "replication::scheduling.tests.scenario_3_neighbor_sync_quorum_pass_full_pipeline",
+      "payment::verifier.tests.test_fresh_contexts_enforce_merkle_closeness",
+      "replication::paid_list.tests.scenario_23_paid_list_entry_removed",
+      "replication::quorum.tests.paid_list_majority_uses_self_inclusive_paid_group_size",
+      "upgrade::release_cache.tests.test_write_read_roundtrip",
+      "replication::types.tests.repair_proofs_remove_key_clears_all_peer_entries",
+      "replication::neighbor_sync.tests.failure_replacement_prefers_remaining_priority_peer",
+      "replication::recent_provers.tests.forget_commitment_drops_only_matching_entries",
+      "replication::audit.tests.audit_response_must_match_key_count",
+      "storage::handler.tests.test_quote_metric_reflects_deletions",
+      "upgrade::monitor.tests.test_process_release_upgrade_available",
+      "replication::subtree.tests.fabricated_nonced_hash_caught_by_spotcheck_probability",
+      "payment::wallet.tests.test_wallet_config_new",
+      "poc_d1_per_sender_counter_is_consistent",
+      "replication::bootstrap.tests.capacity_rejected_clears_on_clean_cycle",
+      "replication::commitment.tests.paths_verify_for_every_key_at_various_sizes",
+      "replication::pruning.tests.confirmed_keys_defer_below_quorum_or_missing_peer_evidence",
+      "replication::tests.apply_revocation_strips_on_digest_mismatch_retains_on_timeout",
+      "payment::cache.tests.test_cache_basic_operations",
+      "replication::config.tests.random_intervals_within_bounds",
+      "config::tests.test_bootstrap_peers_discover_env_var",
+      "payment::quote.tests.test_wire_ml_dsa_signer_returns_ok_with_valid_identity",
+      "payment::verifier.tests.closeness_match_accepts_at_exactly_majority",
+      "replication::audit.tests.audit_digest_failure_reason_is_digest_mismatch_for_mixed_failures",
+      "replication::commitment.tests.sign_and_verify_roundtrip",
+      "replication::tests.losing_lottery_still_consumes_cooldown_window",
+      "storage::handler.tests.test_cache_insert_is_visible",
+      "storage::handler.tests.test_exists_and_local_access",
+      "upgrade::apply.tests.test_default_impl",
+      "upgrade::apply.tests.test_extract_binary_from_tar_gz",
+      "upgrade::tests.test_default_impl",
+      "node::tests.test_explicit_root_dir_persists_across_restarts",
+      "payment::verifier.tests.closeness_waiter_reads_leaders_published_failure",
+      "poc_d1_fetch_queue_is_capacity_bounded",
+      "replication::admission.tests.out_of_range_keys_rejected_by_distance",
+      "replication::audit.tests.audit_failure_summary_leaves_unclassified_rejections_out_of_absent_mismatch_counts",
+      "replication::audit.tests.expired_bootstrap_claim_does_not_remove_peer_from_audit_eligibility",
+      "replication::bootstrap.tests.increment_and_decrement_pending_requests",
+      "replication::bootstrap.tests.track_discovered_keys_accumulates",
+      "replication::neighbor_sync.tests.cycle_completion_resets_cursor_but_keeps_sync_times",
+      "replication::paid_list.tests.paid_prune_cursor_advances_even_without_selected_entry",
+      "replication::paid_list.tests.scenario_49_bootstrap_claim_cleared",
+      "replication::paid_list.tests.scenario_52_paid_and_record_timestamps_independent",
+      "replication::possession.tests.absent_sentinel_is_failed",
+      "replication::protocol.tests.audit_challenge_roundtrip",
+      "replication::pruning.tests.paid_prune_peer_budget_allows_overlapping_targets",
+      "replication::pruning.tests.prune_cursor_advances_even_when_no_candidate_selected",
+      "replication::quorum.tests.scenario_33_batched_response_per_key_evidence",
+      "replication::subtree.tests.detection_uniform_fast_clustered_floor",
+      "storage::handler.tests.test_get_not_found",
+      "storage::handler.tests.test_merkle_candidate_quote_request",
+      "storage::handler.tests.test_storage_stats",
+      "storage::lmdb.tests.test_all_keys",
+      "upgrade::apply.tests.test_extract_binary_from_zip",
+      "upgrade::rollout.tests.test_delay_within_range",
+      "upgrade::tests.test_downgrade_prevention",
+      "upgrade::tests.test_restore_from_backup",
+      "config::tests.test_bootstrap_peers_search_paths_contains_exe_dir",
+      "node::tests.test_build_core_config_dual_stack_by_default",
+      "node::tests.test_identity_persisted_across_restarts",
+      "payment::cache.tests.test_cache_clear",
+      "payment::cache.tests.test_cache_stats",
+      "payment::cache.tests.test_cache_verification_levels_do_not_downgrade_or_over_authorize",
+      "payment::cache.tests.test_default_impl",
+      "payment::pricing.tests.test_derive_records_stored_from_baseline_or_lower_is_zero",
+      "payment::pricing.tests.test_one_record_above_baseline",
+      "payment::quote.tests.test_create_quote",
+      "payment::quote.tests.test_rewards_address_getter",
+      "payment::quote.tests.test_verify_merkle_candidate_cross_key_rejection",
+      "payment::verifier.tests.closeness_lookup_count_uses_max_of_width_and_pool_len",
+      "payment::verifier.tests.test_cache_len_getter",
+      "payment::verifier.tests.test_fresh_contexts_reject_content_mismatch",
+      "payment::verifier.tests.test_legacy_paid_list_admission_enforces_issuer_k_closest",
+      "payment::verifier.tests.test_merkle_address_mismatch_rejected",
+      "payment::verifier.tests.test_payment_status_is_cached",
+      "payment::wallet.tests.test_get_rewards_address_none",
+      "payment::wallet.tests.test_is_valid_address",
+      "poc_d1_set_pending_state_keeps_counter_consistent",
+      "replication::audit.tests.audit_key_filter_retains_stable_proofs_and_rejects_evicted_peers",
+      "replication::audit.tests.classify_audit_send_error_uses_bounded_classes",
+      "replication::audit.tests.first_challenged_key_label_falls_back_when_empty",
+      "replication::bootstrap.tests.mark_bootstrap_drained_sets_flag",
+      "replication::commitment_state.tests.built_commitment_proof_verifies_under_its_own_root",
+      "replication::commitment_state.tests.clear_all_drops_every_slot",
+      "replication::config.tests.audit_response_timeout_fits_honest_hdd_at_typical_sample_size",
+      "replication::config.tests.audit_tick_interval_inverted_rejected",
+      "replication::config.tests.storage_admission_width_adds_margin",
+      "replication::paid_list.tests.test_all_keys",
+      "replication::paid_list.tests.test_remove_batch",
+      "replication::possession.tests.possession_success_clears_active_bootstrap_claim_but_keeps_history",
+      "replication::possession.tests.random_delay_is_within_bounds",
+      "replication::protocol.tests.error_display_deserialization_failed",
+      "replication::pruning.tests.audit_digest_proof_requires_matching_peer_key_nonce_and_bytes",
+      "replication::pruning.tests.paid_confirmations_count_only_confirmed_target_peers",
+      "replication::pruning.tests.paid_prune_confirmations_are_three_quarters_rounded_up",
+      "replication::pruning.tests.prune_audit_challenges_are_one_per_candidate_peer",
+      "replication::pruning.tests.prune_audit_clear_policy_requires_decoded_non_bootstrap_response",
+      "replication::pruning.tests.prune_audit_failure_penalty_is_reserved_once_per_peer_per_pass",
+      "replication::pruning.tests.prune_audit_normal_response_clears_stale_bootstrap_claim",
+      "replication::pruning.tests.prune_bootstrap_abuse_penalty_is_reserved_once_per_peer_per_pass",
+      "replication::pruning.tests.prune_proofs_needed_tolerates_exactly_one_lagging_peer",
+      "replication::quorum.tests.mark_unresolved_sets_all_keys_for_peer",
+      "replication::quorum.tests.present_sources_for_key_filters_targets_and_deduplicates",
+      "replication::recent_provers.tests.per_key_cap_evicts_oldest",
+      "replication::scheduling.tests.add_pending_verify_duplicate_rejected",
+      "replication::scheduling.tests.retry_fetch_nonexistent_returns_none",
+      "replication::scheduling.tests.scenario_8_replica_and_paid_hint_collapses_to_replica",
+      "replication::subtree.tests.spotcheck_always_yields_exactly_min_k_n_distinct_indices",
+      "replication::tests.audit_timeout_preserves_active_bootstrap_claim",
+      "replication::tests.first_failed_key_label_falls_back_when_empty",
+      "replication::tests.fresh_offer_runs_client_put_payment_checks",
+      "replication::tests.paid_notify_uses_paid_list_admission_payment_checks",
+      "replication::types.tests.bootstrap_drain_requires_empty_pending_keys",
+      "replication::types.tests.bootstrap_state_default_matches_new",
+      "replication::types.tests.fetch_candidate_same_distance_and_key_is_equal",
+      "replication::types.tests.neighbor_sync_retain_sync_peers_prunes_only_departed_peers",
+      "replication::types.tests.repair_proofs_remove_peer_requires_fresh_hint_after_reentry",
+      "storage::handler.tests.test_protocol_id",
+      "storage::handler.tests.test_put_rejected_on_insufficient_disk_before_verification",
+      "upgrade::apply.tests.test_current_binary_path",
+      "upgrade::monitor.tests.test_check_interval",
+      "upgrade::monitor.tests.test_monitor_current_version",
+      "upgrade::monitor.tests.test_monitor_repo",
+      "upgrade::monitor.tests.test_select_upgrade_beta_accepts_prerelease_if_newest",
+      "upgrade::rollout.tests.test_max_delay_hours_getter",
+      "upgrade::rollout.tests.test_version_specific_delays",
+      "upgrade::signature.tests.test_embedded_key_rejects_invalid_signature",
+      "upgrade::tests.test_atomic_replacement",
+      "upgrade::tests.test_auto_upgrade_supported_on_all_platforms",
+      "upgrade::tests.test_enforce_max_binary_size_accepts_small",
+      "upgrade::tests.test_tempdir_in_target_dir",
+      "config::tests.test_bootstrap_peers_from_file",
+      "config::tests.test_bootstrap_peers_from_file_invalid_toml",
+      "config::tests.test_bootstrap_peers_parse_empty_peers",
+      "config::tests.test_bootstrap_peers_parse_missing_peers_field",
+      "config::tests.test_bootstrap_peers_parse_valid_toml",
+      "config::tests.test_default_config_has_cache_capacity",
+      "config::tests.test_default_evm_network",
+      "node::tests.test_build_core_config_ipv4_only",
+      "node::tests.test_build_core_config_sets_development_mode_permissive",
+      "node::tests.test_build_core_config_sets_production_mode",
+      "node::tests.test_build_upgrade_monitor_staged_rollout_disabled",
+      "node::tests.test_multiple_identities_errors",
+      "node::tests.test_peer_id_hex_length",
+      "node::tests.test_resolve_identity_first_run_creates_identity",
+      "node::tests.test_resolve_identity_loads_existing",
+      "node::tests.test_scan_identity_dirs_empty_dir",
+      "node::tests.test_scan_identity_dirs_finds_multiple",
+      "node::tests.test_scan_identity_dirs_finds_one",
+      "node::tests.test_scan_identity_dirs_nonexistent_dir",
+      "payment::cache.tests.test_cache_lru_eviction",
+      "payment::cache.tests.test_cache_stats_copy",
+      "payment::cache.tests.test_clear_does_not_reset_stats",
+      "payment::cache.tests.test_concurrent_insert_and_contains",
+      "payment::cache.tests.test_hit_rate_all_hits",
+      "payment::cache.tests.test_hit_rate_all_misses",
+      "payment::cache.tests.test_hit_rate_zero_total",
+      "payment::cache.tests.test_with_capacity_zero_defaults_to_one",
+      "payment::metrics.tests.test_new_tracker",
+      "payment::metrics.tests.test_record_store_increments_counter",
+      "payment::metrics.tests.test_set_records_resyncs_to_authoritative_count",
+      "payment::pricing.tests.test_at_divisor_is_baseline_plus_k",
+      "payment::pricing.tests.test_baseline_is_nonzero_spam_barrier",
+      "payment::pricing.tests.test_derive_records_stored_from_max_price_saturates_no_panic",
+      "payment::pricing.tests.test_derive_records_stored_from_price_round_trips",
+      "payment::pricing.tests.test_double_divisor_is_baseline_plus_four_k",
+      "payment::pricing.tests.test_large_value_no_overflow",
+      "payment::pricing.tests.test_price_deterministic",
+      "payment::pricing.tests.test_price_increases_monotonically",
+      "payment::pricing.tests.test_price_increases_with_records",
+      "payment::pricing.tests.test_quadratic_growth_excluding_baseline",
+      "payment::pricing.tests.test_small_record_counts_near_baseline",
+      "payment::pricing.tests.test_smooth_pricing_no_staircase",
+      "payment::pricing.tests.test_triple_divisor_is_baseline_plus_nine_k",
+      "payment::pricing.tests.test_zero_records_gets_baseline",
+      "payment::quote.tests.test_can_sign_after_set_signer",
+      "payment::quote.tests.test_create_merkle_candidate_quote_with_ml_dsa",
+      "payment::quote.tests.test_create_quote_different_data_types",
+      "payment::quote.tests.test_create_quote_large_size",
+      "payment::quote.tests.test_create_quote_zero_size",
+      "payment::quote.tests.test_empty_signature_fails_verification",
+      "payment::quote.tests.test_generator_without_signer",
+      "payment::quote.tests.test_pricing_tracks_attached_storage_not_side_counter",
+      "payment::quote.tests.test_probe_signer_fails_with_empty_signature",
+      "payment::quote.tests.test_probe_signer_fails_without_signer",
+      "payment::quote.tests.test_quote_signature_round_trip_real_keys",
+      "payment::quote.tests.test_record_store_delegation",
+      "payment::quote.tests.test_records_stored",
+      "payment::quote.tests.test_verify_merkle_candidate_empty_pub_key",
+      "payment::quote.tests.test_verify_merkle_candidate_empty_signature",
+      "payment::quote.tests.test_verify_merkle_candidate_tampered_price",
+      "payment::quote.tests.test_verify_merkle_candidate_tampered_pub_key",
+      "payment::quote.tests.test_verify_merkle_candidate_tampered_reward_address",
+      "payment::quote.tests.test_verify_merkle_candidate_tampered_signature_byte",
+      "payment::quote.tests.test_verify_merkle_candidate_valid_signature",
+      "payment::quote.tests.test_verify_merkle_candidate_wrong_length_pub_key",
+      "payment::quote.tests.test_verify_merkle_candidate_wrong_length_signature",
+      "payment::quote.tests.test_verify_quote_content",
+      "payment::quote.tests.test_verify_quote_signature_empty_pub_key",
+      "payment::verifier.tests.closeness_lookup_timeout_is_240s",
+      "payment::verifier.tests.closeness_lookup_width_is_32",
+      "payment::verifier.tests.closeness_match_accepts_honest_skew_via_exact_matches",
+      "payment::verifier.tests.closeness_match_passes_when_all_16_candidates_in_top_16",
+      "payment::verifier.tests.closeness_match_passes_when_candidates_span_positions_1_to_15_and_17",
+      "payment::verifier.tests.closeness_match_rejects_forged_pool",
+      "payment::verifier.tests.closeness_match_rejects_pool_below_majority",
+      "payment::verifier.tests.closeness_match_returns_sparse_dht_error_when_lookup_too_small",
+      "payment::verifier.tests.closeness_pass_cache_short_circuits_second_call",
+      "payment::verifier.tests.closeness_rejects_pool_with_duplicate_candidate_pub_keys",
+      "payment::verifier.tests.closeness_required_threshold_is_majority",
+      "payment::verifier.tests.closeness_single_flight_concurrent_readers_share_one_verification",
+      "payment::verifier.tests.paid_quote_issuer_closeness_width_uses_k",
+      "payment::verifier.tests.test_cache_hit",
+      "payment::verifier.tests.test_cache_preload_bypasses_evm",
+      "payment::verifier.tests.test_cache_stats_after_operations",
+      "payment::verifier.tests.test_concurrent_cache_lookups",
+      "payment::verifier.tests.test_content_address_mismatch_rejected",
+      "payment::verifier.tests.test_default_evm_config",
+      "payment::verifier.tests.test_future_quote_uses_storage_delta_not_timestamp",
+      "payment::verifier.tests.test_legacy_above_median_verifier_rejected_by_floor",
+      "payment::verifier.tests.test_legacy_paid_list_admission_enforces_full_bundle_floor",
+      "payment::verifier.tests.test_legacy_paid_median_floor_rejection",
+      "payment::verifier.tests.test_legacy_paid_median_full_path_accepted",
+      "payment::verifier.tests.test_legacy_paid_median_issuer_k_closest_rejection",
+      "payment::verifier.tests.test_legacy_paid_quote_bad_signature_rejected",
+      "payment::verifier.tests.test_legacy_paid_quote_content_mismatch_rejected",
+      "payment::verifier.tests.test_legacy_single_quote_proof_accepted",
+      "payment::verifier.tests.test_legacy_single_quote_proof_requires_three_x_payment",
+      "payment::verifier.tests.test_legacy_structural_majority_price_at_median_accepted",
+      "payment::verifier.tests.test_legacy_too_many_quotes_rejected",
+      "payment::verifier.tests.test_legacy_unpaid_peer_binding_mismatch_accepted",
+      "payment::verifier.tests.test_legacy_unpaid_quote_bad_signature_accepted",
+      "payment::verifier.tests.test_legacy_unpaid_quote_content_mismatch_accepted",
+      "payment::verifier.tests.test_legacy_zero_price_median_rejected",
+      "payment::verifier.tests.test_malformed_single_node_proof",
+      "payment::verifier.tests.test_merkle_malformed_body_rejected",
+      "payment::verifier.tests.test_merkle_paid_node_address_mismatch_rejected",
+      "payment::verifier.tests.test_merkle_paid_node_index_out_of_bounds_rejected",
+      "payment::verifier.tests.test_merkle_proof_serialized_size_within_limits",
+      "payment::verifier.tests.test_merkle_proof_tag_is_correct",
+      "payment::verifier.tests.test_merkle_tagged_proof_invalid_data_rejected",
+      "payment::verifier.tests.test_merkle_tampered_candidate_signature_rejected",
+      "payment::verifier.tests.test_merkle_timestamp_mismatch_rejected",
+      "payment::verifier.tests.test_merkle_underpayment_rejected",
+      "payment::verifier.tests.test_merkle_wrong_depth_rejected",
+      "payment::verifier.tests.test_old_quote_uses_storage_delta_not_timestamp",
+      "payment::verifier.tests.test_paid_list_cache_entry_does_not_satisfy_client_put",
+      "payment::verifier.tests.test_payment_required_for_new_data",
+      "payment::verifier.tests.test_payment_status_can_store",
+      "payment::verifier.tests.test_pool_cache_concurrent_access",
+      "payment::verifier.tests.test_pool_cache_eviction",
+      "payment::verifier.tests.test_pool_cache_insert_and_lookup",
+      "payment::verifier.tests.test_proof_at_max_boundary_unknown_tag",
+      "payment::verifier.tests.test_proof_at_min_boundary_unknown_tag",
+      "payment::verifier.tests.test_proof_too_large",
+      "payment::verifier.tests.test_proof_too_small",
+      "payment::verifier.tests.test_quote_23h_old_still_accepted",
+      "payment::verifier.tests.test_quote_beyond_clock_skew_still_uses_storage_delta",
+      "payment::verifier.tests.test_quote_within_clock_skew_tolerance_accepted",
+      "payment::verifier.tests.test_real_ml_dsa_proof_size_within_limits",
+      "payment::verifier.tests.test_single_node_tagged_proof_deserialization",
+      "payment::verifier.tests.test_verify_payment_cached",
+      "payment::verifier.tests.test_verify_payment_without_proof_rejected",
+      "payment::verifier.tests.test_wrong_peer_binding_rejected",
+      "payment::wallet.tests.test_address_with_spaces",
+      "payment::wallet.tests.test_all_ff_address",
+      "payment::wallet.tests.test_all_zeros_address",
+      "payment::wallet.tests.test_empty_string",
+      "payment::wallet.tests.test_get_rewards_address_some",
+      "payment::wallet.tests.test_invalid_hex_chars",
+      "payment::wallet.tests.test_invalid_length",
+      "payment::wallet.tests.test_invalid_prefix",
+      "payment::wallet.tests.test_just_0x_prefix",
+      "payment::wallet.tests.test_parse_lowercase_address",
+      "payment::wallet.tests.test_parse_valid_address",
+      "payment::wallet.tests.test_too_long_address",
+      "payment::wallet.tests.test_uppercase_0x_prefix",
+      "payment::wallet.tests.test_wallet_config_invalid_address",
+      "payment::wallet.tests.test_wallet_config_no_address",
+      "poc_d1_bound_preserves_legitimate_entries",
+      "poc_d1_flooding_peer_cannot_starve_honest_peer",
+      "poc_d1_pending_verify_is_globally_bounded",
+      "replication::admission.tests.admission_result_empty_inputs",
+      "replication::admission.tests.config_close_group_sizes_are_valid",
+      "replication::admission.tests.cross_set_precedence_replica_wins",
+      "replication::admission.tests.deduplication_across_sets",
+      "replication::admission.tests.deduplication_within_replica_hints",
+      "replication::admission.tests.scenario_5_sender_does_not_grant_key_relevance",
+      "replication::admission.tests.scenario_7_out_of_range_key_rejected",
+      "replication::audit.tests.absent_sentinel_is_all_zeros",
+      "replication::audit.tests.audit_digest_failure_reason_is_key_absent_when_all_confirmed_failures_are_absent",
+      "replication::audit.tests.audit_digest_uses_full_record_bytes",
+      "replication::audit.tests.audit_failure_summary_counts_confirmed_absent_and_mismatch_keys",
+      "replication::audit.tests.bootstrapping_skips_digest_computation",
+      "replication::audit.tests.digest_verification_matching",
+      "replication::audit.tests.digest_verification_mismatching_data",
+      "replication::audit.tests.digest_verification_mismatching_key",
+      "replication::audit.tests.digest_verification_mismatching_nonce",
+      "replication::audit.tests.digest_verification_mismatching_peer",
+      "replication::audit.tests.first_challenged_key_label_truncates_to_16_hex_chars",
+      "replication::audit.tests.handle_challenge_absent_keys_returns_sentinel",
+      "replication::audit.tests.handle_challenge_bootstrapping_returns_bootstrapping_response",
+      "replication::audit.tests.handle_challenge_empty_keys_returns_empty_digests",
+      "replication::audit.tests.handle_challenge_mixed_present_and_absent",
+      "replication::audit.tests.handle_challenge_present_keys_returns_correct_digests",
+      "replication::audit.tests.scenario_19_partial_failure_mixed_responsibility",
+      "replication::audit.tests.scenario_29_audit_start_gate_during_bootstrap",
+      "replication::audit.tests.scenario_30_audit_peer_selection_from_sampled_keys",
+      "replication::audit.tests.scenario_32_dynamic_challenge_size",
+      "replication::audit.tests.scenario_47_bootstrap_claim_grace_period_audit",
+      "replication::audit.tests.scenario_53_partial_failure_mixed_responsibility",
+      "replication::audit.tests.scenario_54_all_digests_pass",
+      "replication::audit.tests.scenario_55_no_confirmed_responsibility_no_evidence",
+      "replication::audit.tests.scenario_56_repair_opportunity_filters_never_synced",
+      "replication::bootstrap.tests.capacity_rejected_is_per_source",
+      "replication::bootstrap.tests.check_drained_blocked_by_pending_requests",
+      "replication::bootstrap.tests.check_drained_blocked_by_queued_key",
+      "replication::bootstrap.tests.check_drained_transitions_when_all_work_done",
+      "replication::bootstrap.tests.check_drained_when_already_drained",
+      "replication::commitment.tests.commitment_hash_differs_on_any_field_change",
+      "replication::commitment.tests.commitment_hash_signature_length_change_changes_hash",
+      "replication::commitment.tests.commitment_hash_stable_for_identical_input",
+      "replication::commitment.tests.duplicate_keys_rejected",
+      "replication::commitment.tests.empty_key_set_rejected",
+      "replication::commitment.tests.out_of_protocol_key_count_rejected",
+      "replication::commitment.tests.out_of_range_leaf_index_rejected",
+      "replication::commitment.tests.path_for_absent_key_is_none",
+      "replication::commitment.tests.root_is_deterministic_regardless_of_input_order",
+      "replication::commitment.tests.signature_fails_under_swapped_public_key",
+      "replication::commitment.tests.signature_fails_when_root_tampered",
+      "replication::commitment.tests.signature_fails_with_garbage_bytes",
+      "replication::commitment.tests.signature_fails_with_garbage_public_key",
+      "replication::commitment.tests.single_leaf_tree_root_is_leaf_hash",
+      "replication::commitment.tests.tampered_bytes_hash_breaks_path_verify",
+      "replication::commitment.tests.tampered_path_node_breaks_verify",
+      "replication::commitment.tests.too_many_keys_rejected",
+      "replication::commitment.tests.two_leaf_tree_root_combines_both_leaves",
+      "replication::commitment.tests.wrong_leaf_index_breaks_verify",
+      "replication::commitment.tests.wrong_path_length_rejected_pre_hashing",
+      "replication::commitment.tests.zero_key_count_rejected",
+      "replication::commitment_state.tests.built_commitment_hash_matches_global_hash",
+      "replication::commitment_state.tests.current_plus_last_two_gossiped_are_simultaneously_answerable",
+      "replication::commitment_state.tests.empty_state_returns_none",
+      "replication::commitment_state.tests.gossiped_commitment_stays_answerable_across_rotations",
+      "replication::commitment_state.tests.is_held_tracks_keys_across_the_retention_window_and_ages_them_out",
+      "replication::commitment_state.tests.lookup_arc_outlives_subsequent_rotation",
+      "replication::commitment_state.tests.proof_for_absent_key_is_none",
+      "replication::commitment_state.tests.recent_gossip_record_stays_answerable_within_ttl",
+      "replication::commitment_state.tests.retire_current_drops_ungossiped_current",
+      "replication::commitment_state.tests.retire_current_hides_current_but_keeps_recent_pin_answerable",
+      "replication::commitment_state.tests.retired_current_ages_out_by_gossip_ttl",
+      "replication::commitment_state.tests.retired_current_stays_answerable_within_ttl",
+      "replication::commitment_state.tests.stale_gossip_record_expires_by_ttl_even_without_new_distinct_gossip",
+      "replication::commitment_state.tests.ungossiped_rebuild_does_not_evict_gossiped_commitment",
+      "replication::config.tests.audit_failure_weight_is_five",
+      "replication::config.tests.audit_response_timeout_floor_at_zero_keys",
+      "replication::config.tests.audit_response_timeout_relay_is_outside_envelope",
+      "replication::config.tests.audit_response_timeout_saturates_on_huge_k",
+      "replication::config.tests.audit_response_timeout_scales_with_key_count",
+      "replication::config.tests.audit_sample_count_scales_with_sqrt",
+      "replication::config.tests.close_group_size_exceeding_prune_audit_budget_rejected",
+      "replication::config.tests.close_group_size_zero_rejected",
+      "replication::config.tests.confirm_needed_is_strict_majority",
+      "replication::config.tests.default_prune_hysteresis_is_three_days",
+      "replication::config.tests.defaults_pass_validation",
+      "replication::config.tests.max_incoming_audit_keys_scales_dynamically",
+      "replication::config.tests.neighbor_sync_interval_inverted_rejected",
+      "replication::config.tests.neighbor_sync_peer_count_zero_rejected",
+      "replication::config.tests.neighbor_sync_scope_exceeding_k_bucket_size_rejected",
+      "replication::config.tests.paid_list_close_group_size_zero_rejected",
+      "replication::config.tests.quorum_needed_uses_smaller_of_threshold_and_majority",
+      "replication::config.tests.quorum_threshold_exceeds_close_group_rejected",
+      "replication::config.tests.quorum_threshold_zero_rejected",
+      "replication::config.tests.random_interval_equal_bounds_is_deterministic",
+      "replication::config.tests.replication_protocol_id_is_v2",
+      "replication::config.tests.scenario_18_invalid_config_rejected",
+      "replication::config.tests.scenario_26_dynamic_paid_threshold_undersized",
+      "replication::config.tests.scenario_31_audit_cadence_within_jitter_bounds",
+      "replication::config.tests.self_lookup_interval_inverted_rejected",
+      "replication::neighbor_sync.tests.consecutive_rounds_advance_through_full_cycle",
+      "replication::neighbor_sync.tests.cycle_complete_when_cursor_past_order",
+      "replication::neighbor_sync.tests.handle_sync_failure_no_replacement_when_exhausted",
+      "replication::neighbor_sync.tests.handle_sync_failure_removes_peer_after_cursor",
+      "replication::neighbor_sync.tests.handle_sync_failure_removes_peer_and_adjusts_cursor",
+      "replication::neighbor_sync.tests.handle_sync_failure_unknown_peer_is_noop",
+      "replication::neighbor_sync.tests.priority_peer_in_snapshot_is_not_selected_twice",
+      "replication::neighbor_sync.tests.priority_peer_on_cooldown_is_skipped_and_removed_from_snapshot",
+      "replication::neighbor_sync.tests.record_successful_sync_overwrites_previous",
+      "replication::neighbor_sync.tests.record_successful_sync_updates_last_sync_time",
+      "replication::neighbor_sync.tests.scenario_35_round_robin_with_cooldown_skip",
+      "replication::neighbor_sync.tests.scenario_36_post_cycle_triggers_combined_prune_pass",
+      "replication::neighbor_sync.tests.scenario_37_non_local_rt_inbound_sync_drops_hints",
+      "replication::neighbor_sync.tests.scenario_38_mid_cycle_peer_join_prioritized",
+      "replication::neighbor_sync.tests.scenario_39_unreachable_peer_removed_slot_filled",
+      "replication::neighbor_sync.tests.scenario_40_cooldown_peer_removed_from_snapshot",
+      "replication::neighbor_sync.tests.scenario_41_cycle_always_terminates",
+      "replication::neighbor_sync.tests.select_sync_batch_all_on_cooldown",
+      "replication::neighbor_sync.tests.select_sync_batch_empty_order",
+      "replication::neighbor_sync.tests.select_sync_batch_expired_cooldown_not_skipped",
+      "replication::neighbor_sync.tests.select_sync_batch_returns_up_to_peer_count",
+      "replication::neighbor_sync.tests.select_sync_batch_skips_cooldown_peers",
+      "replication::paid_list.tests.paid_prune_cursor_advances_past_selected_window",
+      "replication::paid_list.tests.paid_prune_cursor_resets_for_empty_paid_list",
+      "replication::paid_list.tests.scenario_13_responsible_range_shrink",
+      "replication::paid_list.tests.scenario_46_bootstrap_claim_first_seen_recorded",
+      "replication::paid_list.tests.scenario_48_bootstrap_claim_abuse_after_grace_period",
+      "replication::paid_list.tests.scenario_50_hysteresis_prevents_premature_deletion",
+      "replication::paid_list.tests.scenario_51_timestamp_reset_on_heal",
+      "replication::paid_list.tests.test_count",
+      "replication::paid_list.tests.test_insert_and_contains",
+      "replication::paid_list.tests.test_insert_duplicate_returns_false",
+      "replication::paid_list.tests.test_paid_out_of_range_timestamps",
+      "replication::paid_list.tests.test_persistence_across_reopen",
+      "replication::paid_list.tests.test_record_out_of_range_timestamps",
+      "replication::paid_list.tests.test_remove_batch_empty",
+      "replication::paid_list.tests.test_remove_clears_timestamps",
+      "replication::paid_list.tests.test_remove_existing",
+      "replication::paid_list.tests.test_remove_nonexistent",
+      "replication::possession.tests.bootstrapping_is_bootstrap_claim",
+      "replication::possession.tests.bootstrapping_with_wrong_challenge_id_is_failed",
+      "replication::possession.tests.forged_digest_is_failed",
+      "replication::possession.tests.matching_digest_is_present",
+      "replication::possession.tests.mismatched_challenge_id_is_failed",
+      "replication::possession.tests.rejected_is_failed",
+      "replication::possession.tests.wrong_arity_is_failed",
+      "replication::protocol.tests.absent_key_digest_is_all_zeros",
+      "replication::protocol.tests.audit_digest_differs_with_different_data",
+      "replication::protocol.tests.audit_digest_differs_with_different_key",
+      "replication::protocol.tests.audit_digest_differs_with_different_nonce",
+      "replication::protocol.tests.audit_digest_differs_with_different_peer",
+      "replication::protocol.tests.audit_digest_is_deterministic",
+      "replication::protocol.tests.audit_response_bootstrapping_roundtrip",
+      "replication::protocol.tests.audit_response_digests_roundtrip",
+      "replication::protocol.tests.decode_rejects_invalid_data",
+      "replication::protocol.tests.decode_rejects_oversized_payload",
+      "replication::protocol.tests.encode_rejects_oversized_message",
+      "replication::protocol.tests.error_display_message_too_large",
+      "replication::protocol.tests.error_display_serialization_failed",
+      "replication::protocol.tests.fetch_request_roundtrip",
+      "replication::protocol.tests.fetch_response_error_roundtrip",
+      "replication::protocol.tests.fetch_response_not_found_roundtrip",
+      "replication::protocol.tests.fetch_response_success_roundtrip",
+      "replication::protocol.tests.fresh_replication_offer_roundtrip",
+      "replication::protocol.tests.fresh_replication_response_accepted_roundtrip",
+      "replication::protocol.tests.fresh_replication_response_rejected_roundtrip",
+      "replication::protocol.tests.max_batch_worst_case_byte_response_fits_wire_cap",
+      "replication::protocol.tests.neighbor_sync_request_roundtrip",
+      "replication::protocol.tests.neighbor_sync_response_roundtrip",
+      "replication::protocol.tests.new_peer_roundtrips_with_commitment_some",
+      "replication::protocol.tests.old_decoder_tolerates_new_neighbor_sync_request",
+      "replication::protocol.tests.old_decoder_tolerates_new_neighbor_sync_response",
+      "replication::protocol.tests.paid_notify_roundtrip",
+      "replication::protocol.tests.real_digest_differs_from_absent_sentinel",
+      "replication::protocol.tests.verification_request_roundtrip",
+      "replication::protocol.tests.verification_response_roundtrip",
+      "replication::pruning.tests.confirmed_keys_require_quorum_of_target_peers_present",
+      "replication::pruning.tests.duplicated_target_peer_counts_once_toward_quorum",
+      "replication::pruning.tests.paid_confirmations_skip_keys_without_evidence",
+      "replication::pruning.tests.paid_prune_peer_budget_rejects_new_peers_past_cap",
+      "replication::pruning.tests.proofs_from_non_target_peers_do_not_count_toward_quorum",
+      "replication::pruning.tests.prune_cursor_advances_past_selected_budget_window",
+      "replication::pruning.tests.zero_quorum_never_confirms",
+      "replication::quorum.tests.paid_list_path_unaffected_by_holder_credit",
+      "replication::quorum.tests.paid_list_verified_with_enough_confirmations",
+      "replication::quorum.tests.paid_list_verified_with_single_paid_peer",
+      "replication::quorum.tests.process_response_ignores_unsolicited_keys",
+      "replication::quorum.tests.process_response_missing_key_gets_unresolved",
+      "replication::quorum.tests.process_response_populates_evidence",
+      "replication::quorum.tests.quorum_downgrades_uncredited_present_peers",
+      "replication::quorum.tests.quorum_failed_when_both_paths_impossible",
+      "replication::quorum.tests.quorum_fails_with_zero_targets_no_paid",
+      "replication::quorum.tests.quorum_inconclusive_with_unresolved_peers",
+      "replication::quorum.tests.quorum_passes_when_all_present_peers_are_credited",
+      "replication::quorum.tests.quorum_verified_beats_paid_list_when_both_satisfied",
+      "replication::quorum.tests.quorum_verified_with_enough_present_responses",
+      "replication::quorum.tests.quorum_verified_with_undersized_quorum_targets",
+      "replication::quorum.tests.scenario_16_timeout_yields_inconclusive",
+      "replication::quorum.tests.scenario_20_paid_list_local_hit_bypasses_presence_quorum",
+      "replication::quorum.tests.scenario_22_paid_list_rejection_below_threshold",
+      "replication::quorum.tests.scenario_27_single_round_collects_both_presence_and_paid",
+      "replication::quorum.tests.scenario_28_dynamic_threshold_with_3_targets",
+      "replication::quorum.tests.scenario_34_partial_response_unresolved_per_key",
+      "replication::quorum.tests.scenario_42_quorum_pass_derives_paid_list_auth",
+      "replication::quorum.tests.scenario_44_cold_start_recovery_via_replica_majority",
+      "replication::quorum.tests.scenario_4_quorum_fail_transitions_to_abandoned",
+      "replication::recent_provers.tests.empty_cache_credits_no_one",
+      "replication::recent_provers.tests.forget_peer_drops_all_entries",
+      "replication::recent_provers.tests.lazy_rotation_via_unknown_commitment_hash_drops_credit",
+      "replication::recent_provers.tests.other_peer_under_same_hash_not_credited",
+      "replication::recent_provers.tests.recorded_proof_credits_under_same_hash",
+      "replication::recent_provers.tests.refresh_in_place_does_not_grow_bucket",
+      "replication::recent_provers.tests.rotated_hash_loses_credit",
+      "replication::scheduling.tests.add_pending_verify_new_key_succeeds",
+      "replication::scheduling.tests.add_pending_verify_rejected_if_in_fetch_queue",
+      "replication::scheduling.tests.add_pending_verify_rejected_if_in_flight",
+      "replication::scheduling.tests.bootstrap_work_empty_when_no_keys_present",
+      "replication::scheduling.tests.bootstrap_work_not_empty_when_key_in_pending",
+      "replication::scheduling.tests.complete_nonexistent_returns_none",
+      "replication::scheduling.tests.contains_key_absent",
+      "replication::scheduling.tests.contains_key_in_fetch_queue",
+      "replication::scheduling.tests.contains_key_in_flight",
+      "replication::scheduling.tests.contains_key_in_pending",
+      "replication::scheduling.tests.dequeue_returns_nearest_first",
+      "replication::scheduling.tests.enqueue_dedup_prevents_duplicates",
+      "replication::scheduling.tests.evict_stale_keeps_fresh_entries",
+      "replication::scheduling.tests.evict_stale_removes_old_entries",
+      "replication::scheduling.tests.remove_pending_nonexistent_returns_none",
+      "replication::scheduling.tests.remove_pending_returns_entry",
+      "replication::scheduling.tests.retry_fetch_returns_next_untried_source",
+      "replication::scheduling.tests.scenario_8_duplicate_key_not_double_queued",
+      "replication::scheduling.tests.start_and_complete_fetch",
+      "replication::storage_commitment_audit.tests.auditor_holds_nothing_still_catches_deleter",
+      "replication::storage_commitment_audit.tests.commitment_bound_to_another_peer_rejected",
+      "replication::storage_commitment_audit.tests.correct_content_address_but_stale_freshness_fails",
+      "replication::storage_commitment_audit.tests.deleter_absent_bytes_is_confirmed_failure",
+      "replication::storage_commitment_audit.tests.fake_storage_garbage_bytes_is_confirmed_failure",
+      "replication::storage_commitment_audit.tests.full_pass_requires_every_sampled_leaf",
+      "replication::storage_commitment_audit.tests.honest_structure_then_bytes_passes",
+      "replication::storage_commitment_audit.tests.omitted_committed_key_is_confirmed_failure",
+      "replication::storage_commitment_audit.tests.sample_size_is_in_3_to_5_band",
+      "replication::storage_commitment_audit.tests.structure_fail_short_circuits_before_round_2",
+      "replication::storage_commitment_audit.tests.subtree_leaf_is_constructible",
+      "replication::storage_commitment_audit.tests.tampered_leaf_structure_rejected",
+      "replication::storage_commitment_audit.tests.wrong_leaf_count_structure_rejected",
+      "replication::storage_commitment_audit.tests.wrong_pinned_commitment_rejected",
+      "replication::subtree.tests.build_proof_reports_missing_bytes",
+      "replication::subtree.tests.different_nonces_cover_different_branches_over_time",
+      "replication::subtree.tests.honest_proof_verifies_at_many_sizes",
+      "replication::subtree.tests.honest_proof_verifies_for_every_size_and_nonce",
+      "replication::subtree.tests.non_ascending_leaves_rejected",
+      "replication::subtree.tests.real_leaves_under_padding_slot_is_zero",
+      "replication::subtree.tests.real_leaves_under_root_is_all",
+      "replication::subtree.tests.responder_cannot_substitute_a_different_branch",
+      "replication::subtree.tests.selection_is_deterministic",
+      "replication::subtree.tests.selection_never_empty_across_many_sizes_and_nonces",
+      "replication::subtree.tests.small_trees_select_whole_tree",
+      "replication::subtree.tests.spotcheck_indices_in_range_and_distinct",
+      "replication::subtree.tests.spotcheck_returns_all_when_subtree_small",
+      "replication::subtree.tests.sqrt_floor_is_exact_ceil",
+      "replication::subtree.tests.subtree_size_near_sqrt_for_balanced_tree",
+      "replication::subtree.tests.tampered_cut_hash_breaks_root",
+      "replication::subtree.tests.tampered_leaf_breaks_root",
+      "replication::subtree.tests.wrong_leaf_count_rejected",
+      "replication::tests.audit_on_gossip_constants_match_adr",
+      "replication::tests.confirmed_failures_revoke_credit_timeout_does_not",
+      "replication::tests.cooldown_is_per_peer_independent",
+      "replication::tests.cooldown_lets_audit_through_after_the_window",
+      "replication::tests.decoded_audit_failures_clear_active_bootstrap_claim",
+      "replication::tests.digest_mismatch_is_not_a_timeout_and_penalizes_immediately",
+      "replication::tests.first_failed_key_label_truncates_to_16_hex_chars",
+      "replication::tests.first_failed_key_label_uses_first_key_only",
+      "replication::tests.gossip_flood_yields_at_most_one_audit_per_cooldown_window",
+      "replication::types.tests.bootstrap_claim_active_window_reports_past_grace",
+      "replication::types.tests.bootstrap_claim_history_prevents_second_grace_window",
+      "replication::types.tests.bootstrap_state_explicit_drained_overrides",
+      "replication::types.tests.bootstrap_state_initial_not_drained",
+      "replication::types.tests.bootstrap_state_pending_keys_block_drain",
+      "replication::types.tests.bootstrap_state_pending_requests_block_drain",
+      "replication::types.tests.bootstrap_state_requires_explicit_drain",
+      "replication::types.tests.fetch_candidate_nearest_key_has_highest_priority",
+      "replication::types.tests.fetch_candidate_same_distance_different_key_is_deterministic",
+      "replication::types.tests.neighbor_sync_cursor_past_end_is_still_complete",
+      "replication::types.tests.neighbor_sync_cycle_completes_when_cursor_reaches_end",
+      "replication::types.tests.neighbor_sync_empty_cycle_is_immediately_complete",
+      "replication::types.tests.neighbor_sync_new_cycle_not_complete",
+      "replication::types.tests.neighbor_sync_priority_queue_blocks_cycle_completion",
+      "replication::types.tests.neighbor_sync_priority_queue_deduplicates_peers",
+      "replication::types.tests.neighbor_sync_remove_peer_clears_order_and_priority_queue",
+      "replication::types.tests.peer_sync_record_no_sync_many_cycles",
+      "replication::types.tests.peer_sync_record_no_sync_yet",
+      "replication::types.tests.peer_sync_record_synced_but_no_cycle",
+      "replication::types.tests.peer_sync_record_synced_with_cycle",
+      "replication::types.tests.repair_opportunity_requires_both_sync_and_cycle",
+      "replication::types.tests.repair_proofs_evicted_peer_reentry_requires_fresh_hint",
+      "replication::types.tests.repair_proofs_record_sent_hint_for_close_peer",
+      "replication::types.tests.repair_proofs_reject_peer_outside_current_close_group",
+      "replication::types.tests.repair_proofs_repeated_hint_does_not_reset_maturity",
+      "replication::types.tests.repair_proofs_require_later_epoch",
+      "replication::types.tests.repair_proofs_require_min_hint_age",
+      "replication::types.tests.repair_proofs_retain_stable_peers_on_close_group_change",
+      "replication::types.tests.verification_state_terminal_variants",
+      "storage::handler.tests.test_handle_unexpected_response_message",
+      "storage::handler.tests.test_payment_cache_stats_returns_correct_values",
+      "storage::handler.tests.test_put_address_mismatch",
+      "storage::handler.tests.test_put_already_exists",
+      "storage::handler.tests.test_put_and_get_chunk",
+      "storage::handler.tests.test_put_chunk_too_large",
+      "storage::handler.tests.test_put_same_chunk_twice_hits_cache",
+      "storage::handler.tests.test_quote_price_drops_after_deletion",
+      "storage::lmdb.tests.test_address_mismatch",
+      "storage::lmdb.tests.test_compute_address",
+      "storage::lmdb.tests.test_delete",
+      "storage::lmdb.tests.test_exists",
+      "storage::lmdb.tests.test_get_not_found",
+      "storage::lmdb.tests.test_get_raw",
+      "storage::lmdb.tests.test_persistence_across_reopen",
+      "storage::lmdb.tests.test_put_and_get",
+      "storage::lmdb.tests.test_put_duplicate",
+      "storage::lmdb.tests.test_stats",
+      "upgrade::apply.tests.test_auto_apply_upgrader_creation",
+      "upgrade::apply.tests.test_extract_binary_empty_file",
+      "upgrade::apply.tests.test_extract_binary_from_tar_gz_nested_path",
+      "upgrade::apply.tests.test_extract_binary_from_zip_with_exe",
+      "upgrade::apply.tests.test_extract_binary_missing_binary_in_tar_gz",
+      "upgrade::apply.tests.test_extract_binary_missing_binary_in_zip",
+      "upgrade::apply.tests.test_extract_binary_unknown_format",
+      "upgrade::binary_cache.tests.test_meta_symlink_to_special_file_is_rejected",
+      "upgrade::binary_cache.tests.test_miss_returns_none",
+      "upgrade::binary_cache.tests.test_missing_meta_returns_none",
+      "upgrade::binary_cache.tests.test_missing_signature_returns_none",
+      "upgrade::binary_cache.tests.test_oversize_cached_archive_is_rejected_before_copy",
+      "upgrade::binary_cache.tests.test_oversized_meta_is_rejected",
+      "upgrade::binary_cache.tests.test_returned_archive_is_private_copy_immune_to_post_hit_swap",
+      "upgrade::binary_cache.tests.test_store_and_get_verified_archive",
+      "upgrade::binary_cache.tests.test_store_archive_rejects_oversize",
+      "upgrade::binary_cache.tests.test_store_rejects_unsigned_archive",
+      "upgrade::binary_cache.tests.test_symlink_cached_archive_is_rejected_before_copy",
+      "upgrade::binary_cache.tests.test_tampered_cached_archive_is_rejected",
+      "upgrade::binary_cache.tests.test_wrong_size_signature_is_rejected_before_copy",
+      "upgrade::cache_dir.tests.test_upgrade_cache_dir_returns_path",
+      "upgrade::monitor.tests.test_beta_channel_accepts_beta",
+      "upgrade::monitor.tests.test_build_platform_patterns",
+      "upgrade::monitor.tests.test_find_platform_asset",
+      "upgrade::monitor.tests.test_is_binary_asset",
+      "upgrade::monitor.tests.test_parse_github_release",
+      "upgrade::monitor.tests.test_prerelease_version",
+      "upgrade::monitor.tests.test_process_release_beta_filtered",
+      "upgrade::monitor.tests.test_process_release_invalid_tag",
+      "upgrade::monitor.tests.test_process_release_no_upgrade_older_version",
+      "upgrade::monitor.tests.test_process_release_no_upgrade_same_version",
+      "upgrade::monitor.tests.test_select_upgrade_stable_ignores_prerelease",
+      "upgrade::monitor.tests.test_stable_channel_filters_beta",
+      "upgrade::monitor.tests.test_version_from_tag",
+      "upgrade::monitor.tests.test_version_newer_available",
+      "upgrade::monitor.tests.test_version_older_rejected",
+      "upgrade::monitor.tests.test_version_same",
+      "upgrade::release_cache.tests.test_corrupted_file_returns_none",
+      "upgrade::release_cache.tests.test_missing_file_returns_none",
+      "upgrade::release_cache.tests.test_ttl_expiry_returns_none",
+      "upgrade::release_cache.tests.test_wrong_repo_returns_none",
+      "upgrade::rollout.tests.test_delay_distribution",
+      "upgrade::rollout.tests.test_delay_scales_with_max_hours",
+      "upgrade::rollout.tests.test_deterministic_delay",
+      "upgrade::rollout.tests.test_different_nodes_different_delays",
+      "upgrade::rollout.tests.test_empty_node_id",
+      "upgrade::rollout.tests.test_large_node_id",
+      "upgrade::rollout.tests.test_zero_delay_when_disabled",
+      "upgrade::signature.tests.test_empty_file",
+      "upgrade::signature.tests.test_large_binary",
+      "upgrade::signature.tests.test_nonexistent_file",
+      "upgrade::signature.tests.test_reject_invalid_signature",
+      "upgrade::signature.tests.test_reject_malformed_signature",
+      "upgrade::signature.tests.test_reject_modified_binary",
+      "upgrade::signature.tests.test_reject_wrong_key",
+      "upgrade::signature.tests.test_release_key_configured",
+      "upgrade::signature.tests.test_verify_from_sig_file",
+      "upgrade::signature.tests.test_verify_valid_signature",
+      "upgrade::signature.tests.test_wrong_context_rejected",
+      "upgrade::tests.test_backup_created",
+      "upgrade::tests.test_backup_nonexistent_rollback_dir",
+      "upgrade::tests.test_backup_special_filename",
+      "upgrade::tests.test_current_version_getter",
+      "upgrade::tests.test_enforce_max_binary_size_rejects_large",
+      "upgrade::tests.test_large_file_backup",
+      "upgrade::tests.test_permissions_preserved",
+      "upgrade::tests.test_restore_fails_without_backup",
+      "upgrade::tests.test_same_version_prevention",
+      "upgrade::tests.test_upgrade_info",
+      "upgrade::tests.test_upgrade_result_variants",
+      "upgrade::tests.test_upgrade_validation_passes"
+    ],
+    "minimal_count": 676,
+    "total_tests": 676
+  },
+  "confidence": 1.0,
+  "provenance": "extracted",
+  "needs_review": false,
+  "review_reasons": [],
+  "urgency": null,
+  "alternatives": [],
+  "meta": {
+    "count": 676,
+    "minimal": 676,
+    "total": 676
+  }
+}

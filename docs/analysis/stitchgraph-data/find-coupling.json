@@ -1,0 +1,417 @@
+{
+  "ok": true,
+  "result": {
+    "pairs": [
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.verify_payment_inner",
+        "b": "src/payment/verifier.rs::payment_proof_type_label",
+        "score": 1.0,
+        "shared_tests": 51,
+        "cross_file": false,
+        "common_callers": [
+          "src/payment/verifier.rs::PaymentVerifier.verify_payment"
+        ]
+      },
+      {
+        "a": "src/storage/lmdb.rs::LmdbStorage.check_disk_space_cached",
+        "b": "src/storage/lmdb.rs::LmdbStorage.exists",
+        "score": 1.0,
+        "shared_tests": 30,
+        "cross_file": false,
+        "common_callers": [
+          "src/storage/lmdb.rs::LmdbStorage.put"
+        ]
+      },
+      {
+        "a": "src/storage/lmdb.rs::LmdbStorage.exists",
+        "b": "src/storage/lmdb.rs::check_disk_space",
+        "score": 1.0,
+        "shared_tests": 30,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/replication/commitment.rs::MerkleTree.key_at",
+        "b": "src/replication/commitment.rs::MerkleTree.levels_count",
+        "score": 1.0,
+        "shared_tests": 23,
+        "cross_file": false,
+        "common_callers": [
+          "src/replication/subtree.rs::subtree_plan"
+        ]
+      },
+      {
+        "a": "src/replication/commitment.rs::MerkleTree.key_at",
+        "b": "src/replication/commitment.rs::MerkleTree.node_at",
+        "score": 1.0,
+        "shared_tests": 23,
+        "cross_file": false,
+        "common_callers": [
+          "src/replication/subtree.rs::subtree_plan"
+        ]
+      },
+      {
+        "a": "src/replication/commitment.rs::MerkleTree.key_at",
+        "b": "src/replication/subtree.rs::build_subtree_proof",
+        "score": 1.0,
+        "shared_tests": 23,
+        "cross_file": true,
+        "common_callers": [
+          "src/replication/subtree.rs::build_proof_reports_missing_bytes"
+        ]
+      },
+      {
+        "a": "src/replication/commitment.rs::MerkleTree.levels_count",
+        "b": "src/replication/commitment.rs::MerkleTree.node_at",
+        "score": 1.0,
+        "shared_tests": 23,
+        "cross_file": false,
+        "common_callers": [
+          "src/replication/subtree.rs::subtree_plan"
+        ]
+      },
+      {
+        "a": "src/replication/commitment.rs::MerkleTree.levels_count",
+        "b": "src/replication/subtree.rs::build_subtree_proof",
+        "score": 1.0,
+        "shared_tests": 23,
+        "cross_file": true,
+        "common_callers": []
+      },
+      {
+        "a": "src/replication/commitment.rs::MerkleTree.node_at",
+        "b": "src/replication/subtree.rs::build_subtree_proof",
+        "score": 1.0,
+        "shared_tests": 23,
+        "cross_file": true,
+        "common_callers": []
+      },
+      {
+        "a": "src/replication/quorum.rs::build_evidence",
+        "b": "src/replication/quorum.rs::collect_present_sources",
+        "score": 1.0,
+        "shared_tests": 21,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.attach_storage",
+        "b": "src/storage/handler.rs::create_test_protocol_with_reserve",
+        "score": 1.0,
+        "shared_tests": 17,
+        "cross_file": true,
+        "common_callers": []
+      },
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.set_records_stored_for_tests",
+        "b": "src/payment/verifier.rs::encoded_peer_id_for_pub_key",
+        "score": 1.0,
+        "shared_tests": 17,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.set_records_stored_for_tests",
+        "b": "src/payment/verifier.rs::make_signed_quote",
+        "score": 1.0,
+        "shared_tests": 17,
+        "cross_file": false,
+        "common_callers": [
+          "src/payment/verifier.rs::test_legacy_single_quote_proof_accepted",
+          "src/payment/verifier.rs::test_legacy_single_quote_proof_requires_three_x_payment",
+          "src/payment/verifier.rs::test_legacy_too_many_quotes_rejected"
+        ]
+      },
+      {
+        "a": "src/replication/commitment_state.rs::bh",
+        "b": "src/replication/commitment_state.rs::key",
+        "score": 1.0,
+        "shared_tests": 16,
+        "cross_file": false,
+        "common_callers": [
+          "src/replication/commitment_state.rs::built",
+          "src/replication/commitment_state.rs::built_commitment_hash_matches_global_hash",
+          "src/replication/commitment_state.rs::built_commitment_proof_verifies_under_its_own_root"
+        ]
+      },
+      {
+        "a": "src/replication/commitment_state.rs::bh",
+        "b": "src/replication/commitment_state.rs::keypair",
+        "score": 1.0,
+        "shared_tests": 16,
+        "cross_file": false,
+        "common_callers": [
+          "src/replication/commitment_state.rs::built",
+          "src/replication/commitment_state.rs::built_commitment_hash_matches_global_hash",
+          "src/replication/commitment_state.rs::built_commitment_proof_verifies_under_its_own_root"
+        ]
+      },
+      {
+        "a": "src/replication/commitment_state.rs::key",
+        "b": "src/replication/commitment_state.rs::keypair",
+        "score": 1.0,
+        "shared_tests": 16,
+        "cross_file": false,
+        "common_callers": [
+          "src/replication/commitment_state.rs::built",
+          "src/replication/commitment_state.rs::built_commitment_hash_matches_global_hash",
+          "src/replication/commitment_state.rs::built_commitment_proof_verifies_under_its_own_root"
+        ]
+      },
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.set_paid_quote_k_closest_for_tests",
+        "b": "src/payment/verifier.rs::median_test_candidates",
+        "score": 1.0,
+        "shared_tests": 15,
+        "cross_file": false,
+        "common_callers": [
+          "src/payment/verifier.rs::mark_k_closest_paid_candidates",
+          "src/payment/verifier.rs::test_legacy_paid_list_admission_enforces_issuer_k_closest",
+          "src/payment/verifier.rs::test_legacy_paid_median_issuer_k_closest_rejection"
+        ]
+      },
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.set_completed_payment_for_tests",
+        "b": "src/payment/verifier.rs::PaymentVerifier.validate_paid_quote_issuer_k_closest",
+        "score": 1.0,
+        "shared_tests": 14,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.validate_paid_quote_issuer_k_closest",
+        "b": "src/payment/verifier.rs::mark_candidate_paid",
+        "score": 1.0,
+        "shared_tests": 14,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/replication/commitment_state.rs::BuiltCommitment.tree",
+        "b": "src/replication/storage_commitment_audit.rs::chunk_bytes",
+        "score": 1.0,
+        "shared_tests": 14,
+        "cross_file": true,
+        "common_callers": [
+          "src/replication/storage_commitment_audit.rs::honest",
+          "src/replication/storage_commitment_audit.rs::honest_far"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.new_with_verify_key",
+        "b": "src/upgrade/binary_cache.rs::test_keypair",
+        "score": 1.0,
+        "shared_tests": 14,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::cache_with_test_key"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.cached_archive_path",
+        "b": "src/upgrade/binary_cache.rs::BinaryCache.cached_signature_path",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::BinaryCache.get_verified_archive",
+          "src/upgrade/binary_cache.rs::BinaryCache.store_archive"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.cached_archive_path",
+        "b": "src/upgrade/binary_cache.rs::BinaryCache.meta_path",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::BinaryCache.get_verified_archive",
+          "src/upgrade/binary_cache.rs::BinaryCache.store_archive",
+          "src/upgrade/binary_cache.rs::test_tampered_cached_archive_is_rejected"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.cached_archive_path",
+        "b": "src/upgrade/binary_cache.rs::open_regular_capped",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::BinaryCache.get_verified_archive"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.cached_archive_path",
+        "b": "src/upgrade/binary_cache.rs::priv_dir",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::test_fifo_cached_archive_does_not_hang",
+          "src/upgrade/binary_cache.rs::test_oversize_cached_archive_is_rejected_before_copy",
+          "src/upgrade/binary_cache.rs::test_returned_archive_is_private_copy_immune_to_post_hit_swap"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.cached_signature_path",
+        "b": "src/upgrade/binary_cache.rs::BinaryCache.meta_path",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::BinaryCache.get_verified_archive",
+          "src/upgrade/binary_cache.rs::BinaryCache.store_archive"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.cached_signature_path",
+        "b": "src/upgrade/binary_cache.rs::open_regular_capped",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::BinaryCache.get_verified_archive"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.cached_signature_path",
+        "b": "src/upgrade/binary_cache.rs::priv_dir",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::test_missing_signature_returns_none",
+          "src/upgrade/binary_cache.rs::test_wrong_size_signature_is_rejected_before_copy"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.get_verified_archive",
+        "b": "src/upgrade/binary_cache.rs::priv_dir",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::test_fifo_cached_archive_does_not_hang",
+          "src/upgrade/binary_cache.rs::test_returned_archive_is_private_copy_immune_to_post_hit_swap",
+          "src/upgrade/binary_cache.rs::test_store_and_get_verified_archive"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.meta_path",
+        "b": "src/upgrade/binary_cache.rs::open_regular_capped",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::BinaryCache.get_verified_archive"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.meta_path",
+        "b": "src/upgrade/binary_cache.rs::priv_dir",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::test_meta_symlink_to_special_file_is_rejected",
+          "src/upgrade/binary_cache.rs::test_missing_meta_returns_none",
+          "src/upgrade/binary_cache.rs::test_oversized_meta_is_rejected"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::open_regular_capped",
+        "b": "src/upgrade/binary_cache.rs::priv_dir",
+        "score": 1.0,
+        "shared_tests": 13,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/payment/verifier.rs::PaymentVerifier.current_records_stored",
+        "b": "src/payment/verifier.rs::price_floor",
+        "score": 1.0,
+        "shared_tests": 12,
+        "cross_file": false,
+        "common_callers": [
+          "src/payment/verifier.rs::PaymentVerifier.validate_paid_quote_price_floor"
+        ]
+      },
+      {
+        "a": "src/replication/commitment.rs::bh",
+        "b": "src/replication/commitment.rs::xn",
+        "score": 1.0,
+        "shared_tests": 11,
+        "cross_file": false,
+        "common_callers": [
+          "src/replication/commitment.rs::out_of_range_leaf_index_rejected",
+          "src/replication/commitment.rs::sign_and_verify_roundtrip",
+          "src/replication/commitment.rs::single_leaf_tree_root_is_leaf_hash"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.atomic_copy",
+        "b": "src/upgrade/binary_cache.rs::make_signed_archive",
+        "score": 1.0,
+        "shared_tests": 11,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::BinaryCache.atomic_copy",
+        "b": "src/upgrade/binary_cache.rs::sha256_file",
+        "score": 1.0,
+        "shared_tests": 11,
+        "cross_file": false,
+        "common_callers": [
+          "src/upgrade/binary_cache.rs::BinaryCache.store_archive"
+        ]
+      },
+      {
+        "a": "src/upgrade/binary_cache.rs::make_signed_archive",
+        "b": "src/upgrade/binary_cache.rs::sha256_file",
+        "score": 1.0,
+        "shared_tests": 11,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/config.rs::default_cache_capacity",
+        "b": "src/config.rs::default_metrics_port",
+        "score": 1.0,
+        "shared_tests": 10,
+        "cross_file": false,
+        "common_callers": [
+          "src/config.rs::PaymentConfig.default"
+        ]
+      },
+      {
+        "a": "src/replication/types.rs::RepairProofs.has_mature_replica_hint",
+        "b": "src/replication/types.rs::RepairProofs.insert_replica_hint_sent",
+        "score": 1.0,
+        "shared_tests": 10,
+        "cross_file": false,
+        "common_callers": []
+      },
+      {
+        "a": "src/replication/types.rs::RepairProofs.has_mature_replica_hint",
+        "b": "src/replication/types.rs::RepairProofs.new",
+        "score": 1.0,
+        "shared_tests": 10,
+        "cross_file": false,
+        "common_callers": []
+      }
+    ],
+    "count": 40
+  },
+  "confidence": 1.0,
+  "provenance": "extracted",
+  "needs_review": true,
+  "review_reasons": [
+    "co-activation without a static edge is a *candidate* for implicit coupling \u2014 populated common_callers usually explains it (siblings of one dispatcher); pairs with no common caller are the truly hidden ones"
+  ],
+  "urgency": null,
+  "alternatives": [],
+  "meta": {
+    "count": 40
+  }
+}

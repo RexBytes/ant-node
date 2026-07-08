@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "result": {
+    "groups": [],
+    "group_count": 0,
+    "redundant_tests": 0
+  },
+  "confidence": 1.0,
+  "provenance": "extracted",
+  "needs_review": true,
+  "review_reasons": [
+    "identical coverage profile != behavioural redundancy (parametrized tests share a profile but test different inputs) \u2014 a consolidation review aid, not a delete list"
+  ],
+  "urgency": null,
+  "alternatives": [],
+  "meta": {
+    "count": 0,
+    "redundant": 0
+  }
+}

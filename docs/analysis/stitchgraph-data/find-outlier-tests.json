@@ -1,0 +1,140 @@
+{
+  "ok": true,
+  "result": {
+    "outliers": [
+      {
+        "test": "upgrade::release_cache.tests.test_write_read_roundtrip",
+        "residual": 0.9743,
+        "breadth": 0.0104,
+        "kind": "unique"
+      },
+      {
+        "test": "upgrade::release_cache.tests.test_ttl_expiry_returns_none",
+        "residual": 0.9699,
+        "breadth": 0.0087,
+        "kind": "unique"
+      },
+      {
+        "test": "upgrade::release_cache.tests.test_wrong_repo_returns_none",
+        "residual": 0.9699,
+        "breadth": 0.0087,
+        "kind": "unique"
+      },
+      {
+        "test": "upgrade::monitor.tests.test_process_release_upgrade_available",
+        "residual": 0.9618,
+        "breadth": 0.0069,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::tests.apply_revocation_strips_on_digest_mismatch_retains_on_timeout",
+        "residual": 0.9562,
+        "breadth": 0.0078,
+        "kind": "unique"
+      },
+      {
+        "test": "upgrade::monitor.tests.test_select_upgrade_beta_accepts_prerelease_if_newest",
+        "residual": 0.955,
+        "breadth": 0.0052,
+        "kind": "unique"
+      },
+      {
+        "test": "upgrade::monitor.tests.test_select_upgrade_stable_ignores_prerelease",
+        "residual": 0.955,
+        "breadth": 0.0052,
+        "kind": "unique"
+      },
+      {
+        "test": "payment::wallet.tests.test_wallet_config_new",
+        "residual": 0.9532,
+        "breadth": 0.0052,
+        "kind": "unique"
+      },
+      {
+        "test": "payment::wallet.tests.test_wallet_config_no_address",
+        "residual": 0.9516,
+        "breadth": 0.0043,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::pruning.tests.confirmed_keys_defer_below_quorum_or_missing_peer_evidence",
+        "residual": 0.9505,
+        "breadth": 0.0052,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::pruning.tests.confirmed_keys_require_quorum_of_target_peers_present",
+        "residual": 0.9505,
+        "breadth": 0.0052,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::config.tests.random_intervals_within_bounds",
+        "residual": 0.9471,
+        "breadth": 0.0052,
+        "kind": "unique"
+      },
+      {
+        "test": "upgrade::monitor.tests.test_process_release_beta_filtered",
+        "residual": 0.9469,
+        "breadth": 0.0043,
+        "kind": "unique"
+      },
+      {
+        "test": "payment::wallet.tests.test_get_rewards_address_some",
+        "residual": 0.9452,
+        "breadth": 0.0043,
+        "kind": "unique"
+      },
+      {
+        "test": "config::tests.test_bootstrap_peers_discover_env_var",
+        "residual": 0.9447,
+        "breadth": 0.0035,
+        "kind": "unique"
+      },
+      {
+        "test": "upgrade::apply.tests.test_default_impl",
+        "residual": 0.9447,
+        "breadth": 0.0035,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::pruning.tests.prune_audit_challenges_are_one_per_candidate_peer",
+        "residual": 0.9444,
+        "breadth": 0.0043,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::audit.tests.audit_digest_failure_reason_is_digest_mismatch_for_mixed_failures",
+        "residual": 0.9438,
+        "breadth": 0.0035,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::audit.tests.audit_failure_summary_counts_confirmed_absent_and_mismatch_keys",
+        "residual": 0.9438,
+        "breadth": 0.0035,
+        "kind": "unique"
+      },
+      {
+        "test": "replication::tests.losing_lottery_still_consumes_cooldown_window",
+        "residual": 0.9428,
+        "breadth": 0.0035,
+        "kind": "unique"
+      }
+    ]
+  },
+  "confidence": 1.0,
+  "provenance": "extracted",
+  "needs_review": false,
+  "review_reasons": [],
+  "urgency": null,
+  "alternatives": [],
+  "meta": {
+    "count": 20,
+    "tests": 676,
+    "functions": 1154,
+    "density": 0.0074,
+    "solver": "numpy-dense"
+  }
+}

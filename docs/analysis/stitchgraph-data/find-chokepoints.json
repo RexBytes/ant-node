@@ -1,0 +1,155 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "id": "src/payment/cache.rs::VerifiedCache.len",
+      "name": "len",
+      "location": "src/payment/cache.rs:210:4",
+      "blast_radius": 6,
+      "reason": "removing this isolates 6 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/payment/pricing.rs::calculate_price",
+      "name": "calculate_price",
+      "location": "src/payment/pricing.rs:89:0",
+      "blast_radius": 6,
+      "reason": "removing this isolates 6 node(s) from the rest of the graph"
+    },
+    {
+      "id": "tests/e2e/live_testnet.rs::create_testnet_client",
+      "name": "create_testnet_client",
+      "location": "tests/e2e/live_testnet.rs:36:0",
+      "blast_radius": 4,
+      "reason": "removing this isolates 4 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/config.rs::StorageConfig.default",
+      "name": "default",
+      "location": "src/config.rs:442:4",
+      "blast_radius": 3,
+      "reason": "removing this isolates 3 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/config.rs::UpgradeConfig.default",
+      "name": "default",
+      "location": "src/config.rs:350:4",
+      "blast_radius": 3,
+      "reason": "removing this isolates 3 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/payment/verifier.rs::PaymentVerifier",
+      "name": "PaymentVerifier",
+      "location": "src/payment/verifier.rs:202:0",
+      "blast_radius": 3,
+      "reason": "removing this isolates 3 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/replication/pruning.rs::prune_paid_entries",
+      "name": "prune_paid_entries",
+      "location": "src/replication/pruning.rs:528:0",
+      "blast_radius": 3,
+      "reason": "removing this isolates 3 node(s) from the rest of the graph"
+    },
+    {
+      "id": "tests/e2e/merkle_payment.rs::build_valid_merkle_proof",
+      "name": "build_valid_merkle_proof",
+      "location": "tests/e2e/merkle_payment.rs:153:0",
+      "blast_radius": 3,
+      "reason": "removing this isolates 3 node(s) from the rest of the graph"
+    },
+    {
+      "id": "scripts/adr-governance.py::main",
+      "name": "main",
+      "location": "scripts/adr-governance.py:63:0",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/config.rs::PaymentConfig.default",
+      "name": "default",
+      "location": "src/config.rs:252:4",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/config.rs::TestnetConfig.default",
+      "name": "default",
+      "location": "src/config.rs:59:4",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/node.rs::RunningNode.run",
+      "name": "run",
+      "location": "src/node.rs:462:4",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/payment/verifier.rs::PaymentStatus",
+      "name": "PaymentStatus",
+      "location": "src/payment/verifier.rs:170:0",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/payment/verifier.rs::PaymentVerifier.verify_merkle_candidate_closeness",
+      "name": "verify_merkle_candidate_closeness",
+      "location": "src/payment/verifier.rs:1195:4",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/payment/wallet.rs::parse_rewards_address",
+      "name": "parse_rewards_address",
+      "location": "src/payment/wallet.rs:69:0",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/replication/commitment.rs::paths_verify_for_every_key_at_various_sizes",
+      "name": "paths_verify_for_every_key_at_various_sizes",
+      "location": "src/replication/commitment.rs:623:4",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/replication/commitment.rs::verify_path",
+      "name": "verify_path",
+      "location": "src/replication/commitment.rs:404:0",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/replication/mod.rs::ReplicationEngine.start_possession_check_scheduler",
+      "name": "start_possession_check_scheduler",
+      "location": "src/replication/mod.rs:667:4",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/replication/mod.rs::apply_revocation_strips_on_digest_mismatch_retains_on_timeout",
+      "name": "apply_revocation_strips_on_digest_mismatch_retains_on_timeout",
+      "location": "src/replication/mod.rs:4843:4",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    },
+    {
+      "id": "src/replication/protocol.rs::ReplicationProtocolError",
+      "name": "ReplicationProtocolError",
+      "location": "src/replication/protocol.rs:592:0",
+      "blast_radius": 2,
+      "reason": "removing this isolates 2 node(s) from the rest of the graph"
+    }
+  ],
+  "confidence": 1.0,
+  "provenance": "extracted",
+  "needs_review": false,
+  "review_reasons": [],
+  "urgency": null,
+  "alternatives": [],
+  "meta": {
+    "count": 20,
+    "chokepoints": 70
+  }
+}

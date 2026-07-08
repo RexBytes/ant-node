@@ -1,0 +1,123 @@
+{
+  "ok": true,
+  "result": {
+    "hotspots": [
+      {
+        "file": "src/payment/verifier.rs",
+        "churn": 52,
+        "behavioural_centrality": 1087.0,
+        "risk": 56524.0,
+        "urgency": "orange"
+      },
+      {
+        "file": "src/replication/types.rs",
+        "churn": 20,
+        "behavioural_centrality": 243.0,
+        "risk": 4860.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/config.rs",
+        "churn": 23,
+        "behavioural_centrality": 165.0,
+        "risk": 3795.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/storage/handler.rs",
+        "churn": 27,
+        "behavioural_centrality": 132.0,
+        "risk": 3564.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/storage/lmdb.rs",
+        "churn": 9,
+        "behavioural_centrality": 382.0,
+        "risk": 3438.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/payment/quote.rs",
+        "churn": 12,
+        "behavioural_centrality": 180.0,
+        "risk": 2160.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/payment/cache.rs",
+        "churn": 8,
+        "behavioural_centrality": 265.0,
+        "risk": 2120.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/quorum.rs",
+        "churn": 10,
+        "behavioural_centrality": 192.0,
+        "risk": 1920.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/upgrade/binary_cache.rs",
+        "churn": 10,
+        "behavioural_centrality": 192.0,
+        "risk": 1920.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/mod.rs",
+        "churn": 49,
+        "behavioural_centrality": 38.0,
+        "risk": 1862.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/audit.rs",
+        "churn": 19,
+        "behavioural_centrality": 97.0,
+        "risk": 1843.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/scheduling.rs",
+        "churn": 8,
+        "behavioural_centrality": 227.0,
+        "risk": 1816.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/pruning.rs",
+        "churn": 25,
+        "behavioural_centrality": 70.0,
+        "risk": 1750.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/config.rs",
+        "churn": 8,
+        "behavioural_centrality": 184.0,
+        "risk": 1472.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/neighbor_sync.rs",
+        "churn": 13,
+        "behavioural_centrality": 110.0,
+        "risk": 1430.0,
+        "urgency": "green"
+      }
+    ]
+  },
+  "confidence": 0.7,
+  "provenance": "inferred",
+  "needs_review": true,
+  "review_reasons": [
+    "low-confidence or name-based result \u2014 verify before relying on it"
+  ],
+  "urgency": null,
+  "alternatives": [],
+  "meta": {
+    "hotspots": 37
+  }
+}

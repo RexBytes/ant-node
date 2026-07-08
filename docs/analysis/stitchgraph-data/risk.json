@@ -1,0 +1,231 @@
+{
+  "ok": true,
+  "result": {
+    "hotspots": [
+      {
+        "file": "src/payment/verifier.rs",
+        "churn": 52,
+        "centrality": 1485.0,
+        "risk": 77220.0,
+        "urgency": "orange"
+      },
+      {
+        "file": "src/replication/types.rs",
+        "churn": 20,
+        "centrality": 2578.0,
+        "risk": 51560.0,
+        "urgency": "orange"
+      },
+      {
+        "file": "src/replication/mod.rs",
+        "churn": 49,
+        "centrality": 536.0,
+        "risk": 26264.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/protocol.rs",
+        "churn": 8,
+        "centrality": 2832.0,
+        "risk": 22656.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/storage/lmdb.rs",
+        "churn": 9,
+        "centrality": 1344.0,
+        "risk": 12096.0,
+        "urgency": "green"
+      },
+      {
+        "file": "tests/e2e/testnet.rs",
+        "churn": 19,
+        "centrality": 574.0,
+        "risk": 10906.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/storage/handler.rs",
+        "churn": 27,
+        "centrality": 394.0,
+        "risk": 10638.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/pruning.rs",
+        "churn": 25,
+        "centrality": 368.0,
+        "risk": 9200.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/config.rs",
+        "churn": 23,
+        "centrality": 371.0,
+        "risk": 8533.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/payment/cache.rs",
+        "churn": 8,
+        "centrality": 709.0,
+        "risk": 5672.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/scheduling.rs",
+        "churn": 8,
+        "centrality": 519.0,
+        "risk": 4152.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/payment/quote.rs",
+        "churn": 12,
+        "centrality": 285.0,
+        "risk": 3420.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/paid_list.rs",
+        "churn": 7,
+        "centrality": 433.0,
+        "risk": 3031.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/config.rs",
+        "churn": 8,
+        "centrality": 363.0,
+        "risk": 2904.0,
+        "urgency": "green"
+      },
+      {
+        "file": "src/replication/audit.rs",
+        "churn": 19,
+        "centrality": 149.0,
+        "risk": 2831.0,
+        "urgency": "green"
+      }
+    ],
+    "hidden_coupling": [
+      {
+        "files": [
+          "src/replication/audit.rs",
+          "src/replication/neighbor_sync.rs"
+        ],
+        "co_changes": 4
+      },
+      {
+        "files": [
+          "src/payment/mod.rs",
+          "src/storage/handler.rs"
+        ],
+        "co_changes": 4
+      },
+      {
+        "files": [
+          "src/storage/handler.rs",
+          "tests/e2e/mod.rs"
+        ],
+        "co_changes": 3
+      },
+      {
+        "files": [
+          "src/devnet.rs",
+          "src/payment/mod.rs"
+        ],
+        "co_changes": 3
+      },
+      {
+        "files": [
+          "src/node.rs",
+          "tests/e2e/mod.rs"
+        ],
+        "co_changes": 3
+      },
+      {
+        "files": [
+          "src/payment/verifier.rs",
+          "tests/e2e/mod.rs"
+        ],
+        "co_changes": 3
+      },
+      {
+        "files": [
+          "src/replication/audit.rs",
+          "src/replication/commitment_audit.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment.rs",
+          "src/replication/commitment_audit.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment.rs",
+          "src/replication/config.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment.rs",
+          "tests/poc_bootstrap_stall.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment_audit.rs",
+          "src/replication/commitment_state.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment_audit.rs",
+          "src/replication/config.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment_audit.rs",
+          "src/replication/mod.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment_audit.rs",
+          "src/replication/protocol.rs"
+        ],
+        "co_changes": 2
+      },
+      {
+        "files": [
+          "src/replication/commitment_audit.rs",
+          "src/replication/pruning.rs"
+        ],
+        "co_changes": 2
+      }
+    ]
+  },
+  "confidence": 0.7,
+  "provenance": "inferred",
+  "needs_review": true,
+  "review_reasons": [
+    "hidden coupling: files co-change but share no structural edge"
+  ],
+  "urgency": "orange",
+  "alternatives": [],
+  "meta": {
+    "hotspots": 67,
+    "hidden": 41
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "ok": true,
+  "result": {
+    "core": [
+      {
+        "function": "src/payment/cache.rs::VerifiedCache.with_capacity",
+        "test_count": 83,
+        "fraction": 0.1228
+      },
+      {
+        "function": "src/payment/verifier.rs::EvmVerifierConfig.default",
+        "test_count": 76,
+        "fraction": 0.1124
+      },
+      {
+        "function": "src/payment/verifier.rs::PaymentVerifier.new",
+        "test_count": 74,
+        "fraction": 0.1095
+      },
+      {
+        "function": "src/payment/verifier.rs::create_test_verifier",
+        "test_count": 56,
+        "fraction": 0.0828
+      },
+      {
+        "function": "src/payment/verifier.rs::PaymentVerifier.check_payment_required",
+        "test_count": 55,
+        "fraction": 0.0814
+      },
+      {
+        "function": "src/payment/cache.rs::VerifiedCache.contains_client_put_verified",
+        "test_count": 54,
+        "fraction": 0.0799
+      },
+      {
+        "function": "src/replication/commitment.rs::MerkleTree.build",
+        "test_count": 53,
+        "fraction": 0.0784
+      },
+      {
+        "function": "src/payment/verifier.rs::PaymentVerifier.verify_payment",
+        "test_count": 51,
+        "fraction": 0.0754
+      },
+      {
+        "function": "src/payment/verifier.rs::PaymentVerifier.verify_payment_inner",
+        "test_count": 51,
+        "fraction": 0.0754
+      },
+      {
+        "function": "src/payment/verifier.rs::payment_proof_type_label",
+        "test_count": 51,
+        "fraction": 0.0754
+      },
+      {
+        "function": "src/replication/commitment.rs::leaf_hash",
+        "test_count": 50,
+        "fraction": 0.074
+      },
+      {
+        "function": "src/replication/commitment.rs::MerkleTree.root",
+        "test_count": 48,
+        "fraction": 0.071
+      },
+      {
+        "function": "src/replication/protocol.rs::compute_audit_digest",
+        "test_count": 48,
+        "fraction": 0.071
+      },
+      {
+        "function": "src/replication/config.rs::ReplicationConfig.default",
+        "test_count": 45,
+        "fraction": 0.0666
+      },
+      {
+        "function": "src/payment/pricing.rs::calculate_price",
+        "test_count": 44,
+        "fraction": 0.0651
+      },
+      {
+        "function": "src/replication/commitment.rs::MerkleTree.key_count",
+        "test_count": 42,
+        "fraction": 0.0621
+      },
+      {
+        "function": "src/storage/lmdb.rs::LmdbStorage.new",
+        "test_count": 42,
+        "fraction": 0.0621
+      },
+      {
+        "function": "src/storage/lmdb.rs::compute_map_size",
+        "test_count": 42,
+        "fraction": 0.0621
+      },
+      {
+        "function": "src/replication/types.rs::NeighborSyncState.new_cycle",
+        "test_count": 41,
+        "fraction": 0.0607
+      },
+      {
+        "function": "src/payment/metrics.rs::QuotingMetricsTracker.new",
+        "test_count": 38,
+        "fraction": 0.0562
+      }
+    ]
+  },
+  "confidence": 1.0,
+  "provenance": "extracted",
+  "needs_review": false,
+  "review_reasons": [],
+  "urgency": null,
+  "alternatives": [],
+  "meta": {
+    "count": 20
+  }
+}
